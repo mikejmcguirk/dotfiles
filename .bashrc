@@ -75,7 +75,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls -lha --color=auto'
+    alias ls='ls -lhA --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -86,11 +86,6 @@ fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -129,5 +124,6 @@ export NvimTheme="delta"
 export NvimCopilotNode="~/.nvm/versions/node/v16.15.0/bin/node"
 export OmniSharpDLL="~/.local/bin/omnisharp/OmniSharp.dll"
 
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_CLI_TELEMETRY_OPTOUT=1 # Bad, Microsoft
+
 alias config='git --git-dir=/home/mjm/.cfg/ --work-tree=/home/mjm'
