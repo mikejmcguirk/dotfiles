@@ -1,7 +1,5 @@
 local wezterm = require "wezterm"
-
 local config = {}
-
 if wezterm.config_builder then
     config = wezterm.config_builder()
 end
@@ -58,11 +56,11 @@ config.colors = {
     brights = {
         'grey',
         '#FF98B3',
-        '#D598FF', -- purple
+        '#D598FF',
         '#FFD298',
-        '#98FFFB', -- cyan
+        '#98FFFB',
         '#C0FF98',
-        '#EDFF98', -- yellow
+        '#EDFF98',
         '#EEEEEC',
     },
 }
