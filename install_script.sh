@@ -1,5 +1,8 @@
 #!/bin/bash
 
+btop_url="https://github.com/aristocratos/btop/releases/download/v1.2.13/btop-x86_64-linux-musl.tbz"
+btop_update=false
+
 nvim_url="https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
 nvim_fresh_install=false
 nvim_update=false
@@ -143,6 +146,14 @@ if $wezterm_install; then
     curl -LO $wezterm_url
     sudo apt install -y ./$wezterm_filename
     rm ./$wezterm_filename
+fi
+
+if $btop_update; then
+    echo 'Updating btop...'
+    wget -P ~/.local/bin $btop_url
+    tar xjvf ~/.local/bin/btop-x86_64-linux-musl.tbz -C ~/.local/bin/btop
+    bash ~/.local/bin/btop/install.sh
+    rm ~/.local/bin/btop-x86_64-linux-musl.tbz
 fi
 
 nvim_update() {
