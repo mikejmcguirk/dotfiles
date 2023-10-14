@@ -127,3 +127,5 @@ export OmniSharpDLL="~/.local/bin/omnisharp/OmniSharp.dll"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1 # Bad, Microsoft
 
 alias config='git --git-dir=/home/mjm/.cfg/ --work-tree=/home/mjm'
+
+export EDITOR=nvim

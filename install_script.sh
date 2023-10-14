@@ -319,6 +319,10 @@ fi
 sudo apt-get autoremove -y
 sudo apt-get autoclean -y
 
+# DOTFILES INFO:
+#
+# https://www.atlassian.com/git/tutorials/dotfiles
+#
 # INSTALLATION ONLY FOLLOW-UP STEPS:
 #
 # Verify git user config
