@@ -84,12 +84,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-mvdot() {
-    shopt -s dotglob
-    mv "$@"
-    shopt -u dotglob
-}
-
 tmux_reload_bashrc() {
     if command -v tmux &> /dev/null; then
         for i in $(tmux list-windows -F "#{window_id}"); do
@@ -130,6 +124,8 @@ if ! shopt -oq posix; then
 fi
 . "$HOME/.cargo/env"
 
+shopt -s dotglob
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -139,8 +135,8 @@ export PATH=$PATH:/home/mjm/.local/bin
 
 export DisableCopilot="false"
 export NvimTheme="delta"
-export NvimCopilotNode="~/.nvm/versions/node/v16.15.0/bin/node"
-export OmniSharpDLL="~/.local/bin/omnisharp/OmniSharp.dll"
+export NvimCopilotNode="$HOME/.nvm/versions/node/v16.15.0/bin/node"
+export OmniSharpDLL="$HOME/.local/bin/omnisharp/OmniSharp.dll"
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1 # Bad, Microsoft
 
