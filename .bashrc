@@ -84,6 +84,24 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+mvdot() {
+    shopt -s dotglob
+    mv "$@"
+    shopt -u dotglob
+}
+
+tmux_reload_bashrc() {
+    if command -v tmux &> /dev/null; then
+        for i in $(tmux list-windows -F "#{window_id}"); do
+            tmux send-keys -t "$i" "source ~/.bashrc" Enter
+        done
+    else
+        echo "tmux is not installed. Please install tmux to use this feature."
+    fi
+}
+
+alias tmux-reload-bashrc="tmux_reload_bashrc"
+
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
