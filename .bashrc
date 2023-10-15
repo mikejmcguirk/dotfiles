@@ -153,6 +153,9 @@ create_html_css_js() {
     cp ~/default_programming_files/.gitignore .
 
     git init
+    git add .
+
+    npm install --save-dev eslint-config-prettier
 }
 
 alias create-html-css-js="create_html_css_js"

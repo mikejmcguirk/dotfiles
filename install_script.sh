@@ -303,6 +303,7 @@ npm install -g --save-dev prettier
 npm install -g dockerfile-language-server-nodejs
 npm i -g bash-language-server
 
+python3 -m pip install --upgrade pip
 pip install python-lsp-server[all]
 pip install nvitop
 pip install beautysh
