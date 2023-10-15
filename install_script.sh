@@ -333,6 +333,7 @@ sudo apt-get autoclean -y
 # DOTFILES INFO:
 #
 # https://www.atlassian.com/git/tutorials/dotfiles
+# https://wiki.archlinux.org/title/Dotfiles
 #
 # INSTALLATION ONLY FOLLOW-UP STEPS:
 #

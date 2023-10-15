@@ -143,3 +143,16 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1 # Bad, Microsoft
 alias config='git --git-dir=/home/mjm/.cfg/ --work-tree=/home/mjm'
 
 export EDITOR=nvim
+
+create_html_css_js() {
+    cp ~/default_programming_files/index.html .
+    cp ~/default_programming_files/style.css .
+    cp ~/default_programming_files/script.js .
+    cp ~/default_programming_files/.prettierrc.json .
+    cp ~/default_programming_files/.eslintrc.json .
+    cp ~/default_programming_files/.gitignore .
+
+    git init
+}
+
+alias create-html-css-js="create_html_css_js"
