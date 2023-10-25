@@ -12,7 +12,7 @@ lua_ls_file="lua-language-server-3.7.0-linux-x64.tar.gz"
 lua_ls_fresh_install=false
 lua_ls_update=false
 
-omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.8/omnisharp-linux-x64-net6.0.tar.gz"
+omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.10/omnisharp-linux-x64-net6.0.tar.gz"
 omnisharp_file="omnisharp-linux-x64-net6.0.tar.gz"
 omnisharp_update=false
 
@@ -21,7 +21,7 @@ marksman_fresh_install=false
 marksman_update=false
 
 nvm_url="https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh"
-nvm_install="false"
+nvm_install=false
 
 tmux_version="3.3a"
 tmux_filename="tmux-$tmux_version"
@@ -52,7 +52,9 @@ check_and_install() {
 packages=("build-essential" "xclip" "cmake" "libssl-dev" "libsystemd-dev" "libparted-dev"
     "libicu-dev" "libcairo2" "libcairo2-dev" "libcurl4-openssl-dev" "meson" "libdbus-1-dev"
     "libgirepository1.0-dev" "vlc" "fzf" "fd-find" "ripgrep" "curl" "shellcheck" "python3-pip"
-"doxygen" "libmbedtls-dev" "zlib1g-dev" "libevent-dev" "ncurses-dev" "bison" "pkg-config" "gh")
+    "doxygen" "libmbedtls-dev" "zlib1g-dev" "libevent-dev" "ncurses-dev" "bison" "pkg-config" "gh"
+    "dotnet-sdk-6.0" "aspnetcore-runtime-6.0" "libc6" "libgcc1" "libgcc-s1" "libgssapi-krb5-2"
+"libicu70" "liblttng-ust1" "libssl3" "libstdc++6" "libunwind8" "zlib1g")
 
 for pkg in "${packages[@]}"; do
     check_and_install "$pkg"
@@ -78,17 +80,6 @@ else
     echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
     sudo apt update
     sudo apt-get install -y brave-browser
-fi
-
-if dpkg -l | grep -qw dotnet-sdk-6.0; then
-    echo "dotnet-sdk-6.0 is already installed."
-else
-    # https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-
-    echo "dotnet-sdk-6.0 is not installed. Installing now..."
-    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-    sudo dpkg -i packages-microsoft-prod.deb
-    sudo apt-get update
-    sudo apt-get install -y dotnet-sdk-6.0
 fi
 
 docker_packages=("docker-ce" "docker-ce-cli" "containerd.io" "docker-buildx-plugin" "docker-compose-plugin")
