@@ -283,6 +283,7 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
+nvm install v18.18.0 #For copilot
 nvm install --lts
 nvm alias default lts/*
 

@@ -135,7 +135,7 @@ export PATH=$PATH:/home/mjm/.local/bin
 
 export DisableCopilot="false"
 export NvimTheme="delta"
-export NvimCopilotNode="$HOME/.nvm/versions/node/v16.15.0/bin/node"
+export NvimCopilotNode="$HOME/.nvm/versions/node/v18.18.0/bin/node"
 export OmniSharpDLL="$HOME/.local/bin/omnisharp/OmniSharp.dll"
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1 # Bad, Microsoft
