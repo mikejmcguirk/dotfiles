@@ -120,6 +120,11 @@ if [ ! -f ~/.cargo/bin/taplo ]; then
     cargo install --features lsp --locked taplo-cli
 fi
 
+if [ ! -f ~/.cargo/bin/stylua ]; then
+    echo "stylua is not installed. Installing now..."
+    cargo install stylua
+fi
+
 if [ ! -f ~/.cargo/bin/cargo-install-update ]; then
     echo "cargo-update is not installed. Installing now..."
     cargo install cargo-update
