@@ -12,9 +12,9 @@ lua_ls_file="lua-language-server-3.7.0-linux-x64.tar.gz"
 lua_ls_fresh_install=false
 lua_ls_update=false
 
-omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.10/omnisharp-linux-x64-net6.0.tar.gz"
+omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.8/omnisharp-linux-x64-net6.0.tar.gz"
 omnisharp_file="omnisharp-linux-x64-net6.0.tar.gz"
-omnisharp_update=false
+omnisharp_update=true
 
 marksman_url="https://github.com/artempyanykh/marksman/releases/download/2023-07-25/marksman-linux-x64"
 marksman_fresh_install=false
@@ -49,6 +49,7 @@ check_and_install() {
     fi
 }
 
+# If yousing a waylland wm, need to install wl-clipboard instead of xclip
 packages=("build-essential" "xclip" "cmake" "libssl-dev" "libsystemd-dev" "libparted-dev"
     "libicu-dev" "libcairo2" "libcairo2-dev" "libcurl4-openssl-dev" "meson" "libdbus-1-dev"
     "libgirepository1.0-dev" "vlc" "fzf" "fd-find" "ripgrep" "curl" "shellcheck" "python3-pip"
@@ -114,6 +115,9 @@ if [ ! -d ~/.cargo ]; then
     echo "rustup is not installed. Installing now..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
+
+# Even if it shows in cargo/bin, still needs to be done to get it working on the stable toolchain
+rustup component add rust-analyzer
 
 if [ ! -f ~/.cargo/bin/taplo ]; then
     echo "taplo-cli is not installed. Installing now..."
@@ -298,17 +302,26 @@ npm i -g vscode-langservers-extracted
 npm install -g --save-dev prettier
 
 npm install -g dockerfile-language-server-nodejs
+npm install -g dockerfile-utils
 npm i -g bash-language-server
 
 python3 -m pip install --upgrade pip
-pip install python-lsp-server[all]
 pip install nvitop
+pip install isort
+pip install black
+pip install ruff-lsp
+pip install ruff
+pip install python-lsp-server[all]
 pip install beautysh
 pip list --outdated --format=columns | tail -n +3 | awk '{print $1}' | xargs -n1 pip install -U
 # pip can brick packages if it cannot resolve dependencies properly during update
 # Key packages are manually reinstalled here to ensure they are not broken
-pip install python-lsp-server[all]
 pip install nvitop
+pip install isort
+pip install black
+pip install ruff-lsp
+pip install ruff
+pip install python-lsp-server[all]
 pip install beautysh
 
 if [ ! -d ~/.fonts ]; then

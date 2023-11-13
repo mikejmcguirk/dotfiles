@@ -27,7 +27,7 @@ config.window_padding = {
     bottom = 1,
 }
 
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.85
 
 config.inactive_pane_hsb = {
     saturation = 0.4,
@@ -46,24 +46,24 @@ config.colors = {
     cursor_border = "#EEEEEC",
     split = "#d598ff",
     ansi = {
-        'black',
-        '#9C5467',
-        '#7C509B',
-        '#916D3F',
-        '#459B97',
-        '#5E8F3F',
-        '#9EAD54',
-        'silver',
+        "black",
+        "#9C5467",
+        "#7C509B",
+        "#916D3F",
+        "#459B97",
+        "#5E8F3F",
+        "#9EAD54",
+        "silver",
     },
     brights = {
-        'grey',
-        '#FF98B3',
-        '#D598FF',
-        '#FFD298',
-        '#98FFFB',
-        '#C0FF98',
-        '#EDFF98',
-        '#EEEEEC',
+        "grey",
+        "#FF98B3",
+        "#D598FF",
+        "#FFD298",
+        "#98FFFB",
+        "#C0FF98",
+        "#EDFF98",
+        "#EEEEEC",
     },
 }
 
