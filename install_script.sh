@@ -14,7 +14,7 @@ lua_ls_update=false
 
 omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.8/omnisharp-linux-x64-net6.0.tar.gz"
 omnisharp_file="omnisharp-linux-x64-net6.0.tar.gz"
-omnisharp_update=true
+omnisharp_update=false
 
 marksman_url="https://github.com/artempyanykh/marksman/releases/download/2023-07-25/marksman-linux-x64"
 marksman_fresh_install=false
@@ -55,7 +55,7 @@ packages=("build-essential" "xclip" "cmake" "libssl-dev" "libsystemd-dev" "libpa
     "libgirepository1.0-dev" "vlc" "fzf" "fd-find" "ripgrep" "curl" "shellcheck" "python3-pip"
     "doxygen" "libmbedtls-dev" "zlib1g-dev" "libevent-dev" "ncurses-dev" "bison" "pkg-config" "gh"
     "dotnet-sdk-6.0" "aspnetcore-runtime-6.0" "libc6" "libgcc1" "libgcc-s1" "libgssapi-krb5-2"
-"libicu70" "liblttng-ust1" "libssl3" "libstdc++6" "libunwind8" "zlib1g")
+"libicu70" "liblttng-ust1" "libssl3" "libstdc++6" "libunwind8" "zlib1g" "peek")
 
 for pkg in "${packages[@]}"; do
     check_and_install "$pkg"
@@ -298,6 +298,7 @@ nvm alias default lts/*
 
 npm i -g npm npm i -g typescript-language-server typescript
 npm i -g eslint
+npm i -g eslint_d
 npm i -g vscode-langservers-extracted
 npm install -g --save-dev prettier
 
