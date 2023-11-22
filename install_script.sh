@@ -7,8 +7,8 @@ nvim_url="https://github.com/neovim/neovim/releases/download/stable/nvim-linux64
 nvim_fresh_install=false
 nvim_update=false
 
-lua_ls_url="https://github.com/LuaLS/lua-language-server/releases/download/3.7.0/lua-language-server-3.7.0-linux-x64.tar.gz"
-lua_ls_file="lua-language-server-3.7.0-linux-x64.tar.gz"
+lua_ls_url="https://github.com/LuaLS/lua-language-server/releases/download/3.7.3/lua-language-server-3.7.3-linux-x64.tar.gz"
+lua_ls_file="lua-language-server-3.7.3-linux-x64.tar.gz"
 lua_ls_fresh_install=false
 lua_ls_update=false
 
@@ -28,7 +28,7 @@ tmux_filename="tmux-$tmux_version"
 tmux_url="https://github.com/tmux/tmux/releases/download/3.3a/$tmux_filename.tar.gz"
 tmux_install=false
 
-nerd_font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Cousine.zip"
+nerd_font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/Cousine.zip"
 nerd_font_filename="Cousine.zip"
 add_nerd_font=false
 
