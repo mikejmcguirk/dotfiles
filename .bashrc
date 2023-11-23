@@ -144,18 +144,11 @@ alias config='git --git-dir=/home/mjm/.cfg/ --work-tree=/home/mjm'
 
 export EDITOR=nvim
 
-create_html_css_js() {
-    cp ~/default_programming_files/index.html .
-    cp ~/default_programming_files/style.css .
-    cp ~/default_programming_files/script.js .
-    cp ~/default_programming_files/.prettierrc.json .
-    cp ~/default_programming_files/.eslintrc.json .
+for_creating_all() {
     cp ~/default_programming_files/.gitignore .
-
+    cp ~/default_programming_files/.markdownlint.jsonc .
     git init
     git add .
-
-    npm install --save-dev eslint-config-prettier
 }
 
 create_html_css_js() {
@@ -164,12 +157,9 @@ create_html_css_js() {
     cp ~/default_programming_files/script.js .
     cp ~/default_programming_files/.prettierrc.json .
     cp ~/default_programming_files/.eslintrc.json .
-    cp ~/default_programming_files/.gitignore .
-
-    git init
-    git add .
-
     npm install --save-dev eslint-config-prettier
+
+    for_creating_all
 }
 
 alias create-html-css-js="create_html_css_js"
@@ -178,8 +168,7 @@ create_cs() {
     cp ~/default_programming_files/.csproj .
     cp ~/default_programming_files/Program.cs .
 
-    git init
-    git add .
+    for_creating_all
 }
 
 alias create-cs="create_cs"

@@ -307,6 +307,9 @@ npm install -g dockerfile-language-server-nodejs
 npm install -g dockerfile-utils
 npm i -g bash-language-server
 
+npm install -g markdownlint --save-dev
+npm install -g markdownlint-cli
+
 python3 -m pip install --upgrade pip
 pip install nvitop
 pip install isort
