@@ -301,6 +301,7 @@ npm i -g eslint
 npm i -g eslint_d
 npm i -g vscode-langservers-extracted
 npm install -g --save-dev prettier
+npm install -g @fsouza/prettierd
 
 npm install -g dockerfile-language-server-nodejs
 npm install -g dockerfile-utils
