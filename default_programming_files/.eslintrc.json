@@ -16,6 +16,7 @@
     "no-var": "warn",
     "one-var": ["warn", "never"],
     "prefer-const": "warn",
+    "radix": "as-needed",
     "strict": ["warn", "global"]
   }
 }
