@@ -11,6 +11,7 @@
   "rules": {
     "capitalized-comments": "off",
     "func-names": ["warn", "as-needed"],
+    "max-statements": "off",
     "multiline-comment-style": "off",
     "no-magic-numbers": "warn",
     "no-console": "off",
