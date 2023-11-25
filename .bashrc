@@ -143,6 +143,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1 # Bad, Microsoft
 alias config='git --git-dir=/home/mjm/.cfg/ --work-tree=/home/mjm'
 
 export EDITOR=nvim
+export ESLINT_USE_FLAT_CONFIG=false #As of 11/25/2023, just not ready
 
 for_creating_all() {
     cp ~/default_programming_files/.gitignore .
@@ -151,14 +152,27 @@ for_creating_all() {
     git add .
 }
 
+for_creating_all_nogit() {
+    cp ~/default_programming_files/.markdownlint.jsonc .
+}
+
+for_javascript() {
+    cp ~/default_programming_files/.prettierrc.json .
+    cp ~/default_programming_files/.eslintrc.json .
+    cp ~/default_programming_files/package.json .
+
+    npm install --save-dev eslint-config-prettier
+    # Future proofing for flat config
+    npm install globals
+    npm install @eslint/js
+}
+
 create_html_css_js() {
     cp ~/default_programming_files/index.html .
     cp ~/default_programming_files/style.css .
     cp ~/default_programming_files/script.js .
-    cp ~/default_programming_files/.prettierrc.json .
-    cp ~/default_programming_files/.eslintrc.json .
-    npm install --save-dev eslint-config-prettier
 
+    for_javascript_all
     for_creating_all
 }
 
@@ -172,3 +186,12 @@ create_cs() {
 }
 
 alias create-cs="create_cs"
+
+create_js_nogit() {
+    cp ~/default_programming_files/index.js .
+
+    for_javascript
+    for_creating_all_nogit
+}
+
+alias create-js-nogit="create_js_nogit"
