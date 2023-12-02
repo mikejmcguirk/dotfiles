@@ -129,6 +129,11 @@ if [ ! -f ~/.cargo/bin/stylua ]; then
     cargo install stylua
 fi
 
+if [ ! -f ~/.cargo/bin/tokei ]; then
+    echo "tokei is not installed. Installing now..."
+    cargo install tokei
+fi
+
 if [ ! -f ~/.cargo/bin/cargo-install-update ]; then
     echo "cargo-update is not installed. Installing now..."
     cargo install cargo-update
