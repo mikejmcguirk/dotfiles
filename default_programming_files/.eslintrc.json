@@ -11,6 +11,7 @@
   },
   "rules": {
     "arrow-body-style": "warn",
+    "camelcase": "warn",
     "capitalized-comments": "off",
     "complexity": "off",
     "func-names": ["warn", "as-needed"],
@@ -27,16 +28,19 @@
     "no-empty-function": "warn",
     "no-inline-comments": "off",
     "no-magic-numbers": "off",
-    "no-shadow": ["warn", { "builtinGlobals": true }],
     "no-plusplus": ["warn", { "allowForLoopAfterthoughts": true }],
+    "no-shadow": ["warn", { "builtinGlobals": true }],
+    "no-ternary": "off",
     "no-undefined": "warn",
     "no-unused-vars": 1,
     "no-var": "warn",
     "one-var": ["warn", "never"],
     "prefer-const": "warn",
     "prefer-destructuring": "off",
+    "prefer-template": "warn",
     "radix": ["warn", "as-needed"],
     "require-unicode-regexp": "warn",
+    "sort-imports": "warn",
     "sort-keys": "off",
     "strict": ["warn", "global"]
   }
