@@ -194,7 +194,7 @@ create_cs_nogit() {
     for_creating_all_nogit
 }
 
-alias create-cs-nogit="create_cs"
+alias create-cs-nogit="create_cs_nogit"
 
 create_js_nogit() {
     cp ~/default_programming_files/index.js .
