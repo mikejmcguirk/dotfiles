@@ -187,6 +187,15 @@ create_cs() {
 
 alias create-cs="create_cs"
 
+create_cs_nogit() {
+    cp ~/default_programming_files/.csproj .
+    cp ~/default_programming_files/Program.cs .
+
+    for_creating_all_nogit
+}
+
+alias create-cs-nogit="create_cs"
+
 create_js_nogit() {
     cp ~/default_programming_files/index.js .
 
