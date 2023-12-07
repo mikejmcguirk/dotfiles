@@ -143,7 +143,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1 # Bad, Microsoft
 alias config='git --git-dir=/home/mjm/.cfg/ --work-tree=/home/mjm'
 
 export EDITOR=nvim
-export ESLINT_USE_FLAT_CONFIG=false #As of 11/25/2023, just not ready
+export ESLINT_USE_FLAT_CONFIG= #As of 11/25/2023, just not ready
 
 for_creating_all() {
     cp ~/default_programming_files/.gitignore .
