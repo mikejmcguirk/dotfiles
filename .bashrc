@@ -181,6 +181,7 @@ alias create-html-css-js="create_html_css_js"
 create_cs() {
     cp ~/default_programming_files/.csproj .
     cp ~/default_programming_files/Program.cs .
+    cp ~/default_programming_files/omnisharp.json .
 
     for_creating_all
 }
@@ -190,6 +191,7 @@ alias create-cs="create_cs"
 create_cs_nogit() {
     cp ~/default_programming_files/.csproj .
     cp ~/default_programming_files/Program.cs .
+    cp ~/default_programming_files/omnisharp.json .
 
     for_creating_all_nogit
 }
