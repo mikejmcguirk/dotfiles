@@ -167,6 +167,15 @@ for_javascript() {
     npm install @eslint/js
 }
 
+alias create-html-css-js="create_html_css_js"
+
+create_js_nogit() {
+    cp ~/default_programming_files/index.js .
+
+    for_javascript
+    for_creating_all_nogit
+}
+
 create_html_css_js() {
     cp ~/default_programming_files/index.html .
     cp ~/default_programming_files/style.css .
@@ -176,33 +185,45 @@ create_html_css_js() {
     for_creating_all
 }
 
-alias create-html-css-js="create_html_css_js"
+alias create-js-nogit="create_js_nogit"
 
-create_cs() {
+for_cs() {
+    cp ~/default_programming_files/omnisharp.json .
+}
+
+std_cs() {
     cp ~/default_programming_files/.csproj .
     cp ~/default_programming_files/Program.cs .
-    cp ~/default_programming_files/omnisharp.json .
+}
 
+create_cs() {
+    std_cs
+    for_cs
     for_creating_all
 }
 
 alias create-cs="create_cs"
 
 create_cs_nogit() {
-    cp ~/default_programming_files/.csproj .
-    cp ~/default_programming_files/Program.cs .
-    cp ~/default_programming_files/omnisharp.json .
-
+    std_cs
+    for_cs
     for_creating_all_nogit
 }
 
 alias create-cs-nogit="create_cs_nogit"
 
-create_js_nogit() {
-    cp ~/default_programming_files/index.js .
+create_aoc_cs() {
+    cp ~/default_programming_files/advent_of_code/AdventOfCode.csproj .
+    cp ~/default_programming_files/advent_of_code/Program.cs .
+    cp ~/default_programming_files/advent_of_code/PartOne.cs .
+    cp ~/default_programming_files/advent_of_code/PartTwo.cs .
 
-    for_javascript
+    for_cs
+
+    touch test_data.txt
+    touch puzzle_input.txt
+
     for_creating_all_nogit
 }
 
-alias create-js-nogit="create_js_nogit"
+alias create-aoc-cs="create_aoc_cs"
