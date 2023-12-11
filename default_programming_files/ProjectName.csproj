@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <NoWarn>$(NoWarn);IDE0055</NoWarn>
+    <NoWarn>$(NoWarn);IDE0055;IDE0046</NoWarn>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <!-- Uncomment to generate XML documentation -->

@@ -192,7 +192,7 @@ for_cs() {
 }
 
 std_cs() {
-    cp ~/default_programming_files/.csproj .
+    cp ~/default_programming_files/ProjectName.csproj .
     cp ~/default_programming_files/Program.cs .
 }
 
@@ -213,7 +213,7 @@ create_cs_nogit() {
 alias create-cs-nogit="create_cs_nogit"
 
 create_aoc_cs() {
-    cp ~/default_programming_files/advent_of_code/AdventOfCode.csproj .
+    cp ~/default_programming_files/ProjectName.csproj AdventOfCode.csproj
     cp ~/default_programming_files/advent_of_code/Program.cs .
     cp ~/default_programming_files/advent_of_code/PartOne.cs .
     cp ~/default_programming_files/advent_of_code/PartTwo.cs .
