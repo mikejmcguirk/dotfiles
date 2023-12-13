@@ -188,7 +188,7 @@ create_html_css_js() {
 alias create-js-nogit="create_js_nogit"
 
 for_cs() {
-    cp ~/default_programming_files/omnisharp.json .
+    cp ~/default_programming_files/.csharpierrc.json .
 }
 
 std_cs() {
