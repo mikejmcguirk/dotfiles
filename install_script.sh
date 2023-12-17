@@ -62,6 +62,7 @@ for pkg in "${packages[@]}"; do
 done
 
 dotnet tool install csharpier -g
+dotnet tool update csharpier -g
 
 if dpkg -l | grep -qw git-all; then
     echo "git-all is already installed."
