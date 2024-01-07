@@ -1,26 +1,27 @@
 #!/bin/bash
 
-btop_url="https://github.com/aristocratos/btop/releases/download/v1.2.13/btop-x86_64-linux-musl.tbz"
+btop_url="https://github.com/aristocratos/btop/releases/download/v1.3.0/btop-x86_64-linux-musl.tbz"
 btop_update=false
 
-nvim_url="https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
+nvim_url="https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz"
 nvim_fresh_install=false
 nvim_update=false
 
-lua_ls_url="https://github.com/LuaLS/lua-language-server/releases/download/3.7.3/lua-language-server-3.7.3-linux-x64.tar.gz"
-lua_ls_file="lua-language-server-3.7.3-linux-x64.tar.gz"
+lua_ls_url="https://github.com/LuaLS/lua-language-server/releases/download/3.7.4/lua-language-server-3.7.4-linux-x64.tar.gz"
+lua_ls_file="lua-language-server-3.7.4-linux-x64.tar.gz"
 lua_ls_fresh_install=false
 lua_ls_update=false
 
-omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.8/omnisharp-linux-x64-net6.0.tar.gz"
+# omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.8/omnisharp-linux-x64-net6.0.tar.gz"
+omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.11/omnisharp-linux-x64-net6.0.tar.gz"
 omnisharp_file="omnisharp-linux-x64-net6.0.tar.gz"
 omnisharp_update=false
 
-marksman_url="https://github.com/artempyanykh/marksman/releases/download/2023-07-25/marksman-linux-x64"
+marksman_url="https://github.com/artempyanykh/marksman/releases/download/2023-12-09/marksman-linux-x64"
 marksman_fresh_install=false
 marksman_update=false
 
-nvm_url="https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh"
+nvm_url="https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh"
 nvm_install=false
 
 tmux_version="3.3a"
@@ -28,7 +29,7 @@ tmux_filename="tmux-$tmux_version"
 tmux_url="https://github.com/tmux/tmux/releases/download/3.3a/$tmux_filename.tar.gz"
 tmux_install=false
 
-nerd_font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/Cousine.zip"
+nerd_font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Cousine.zip"
 nerd_font_filename="Cousine.zip"
 add_nerd_font=false
 
@@ -345,7 +346,7 @@ if $add_nerd_font; then
     # nerdfonts.com
     echo "Adding nerd font..."
     wget -P ~/.fonts $nerd_font_url
-    unzip ~/.fonts/$nerd_font_filename -d ~/.fonts
+    unzip -o ~/.fonts/$nerd_font_filename -d ~/.fonts
     rm ~/.fonts/$nerd_font_filename
 else
     echo 'add_nerd_font set to false'
