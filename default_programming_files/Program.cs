@@ -1,8 +1,11 @@
 using System;
 
-namespace ProjectName {
-    public class Program {
-        public static void Main() {
+namespace ProjectName
+{
+    public class Program
+    {
+        public static void Main()
+        {
             Console.WriteLine("Hello, World!");
         }
     }

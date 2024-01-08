@@ -227,3 +227,36 @@ create_aoc_cs() {
 }
 
 alias create-aoc-cs="create_aoc_cs"
+
+for_py() {
+    cp ~/default_programming_files/ruff.toml .
+}
+create_py() {
+    for_py
+
+    for_creating_all
+}
+
+alias create-py="create_py"
+
+create_py_nogit() {
+    for_py
+
+    for_creating_all_nogit
+}
+
+alias create-py-nogit="create_py_nogit"
+
+create_py_aoc() {
+    cp ~/default_programming_files/advent_of_code/part_one.py .
+    cp ~/default_programming_files/advent_of_code/part_two.py .
+
+    for_py
+
+    touch test_data.txt
+    touch puzzle_input.txt
+
+    for_creating_all_nogit
+}
+
+alias create-aoc-py="create_py_aoc"
