@@ -33,8 +33,8 @@ nerd_font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/
 nerd_font_filename="Cousine.zip"
 add_nerd_font=false
 
-wezterm_url="https://github.com/wez/wezterm/releases/download/20230712-072601-f4abf8fd/wezterm-20230712-072601-f4abf8fd.Ubuntu22.04.deb"
-wezterm_filename="wezterm-20230712-072601-f4abf8fd.Ubuntu22.04.deb"
+wezterm_url="https://github.com/wez/wezterm/releases/download/20240127-113634-bbcac864/wezterm-20240127-113634-bbcac864.Ubuntu22.04.deb"
+wezterm_filename="wezterm-20240127-113634-bbcac864.Ubuntu22.04.deb"
 wezterm_install=false
 
 sudo apt-get update -y
@@ -50,7 +50,7 @@ check_and_install() {
     fi
 }
 
-# If yousing a waylland wm, need to install wl-clipboard instead of xclip
+# If using a waylland wm, need to install wl-clipboard instead of xclip
 packages=("build-essential" "xclip" "cmake" "libssl-dev" "libsystemd-dev" "libparted-dev"
     "libicu-dev" "libcairo2" "libcairo2-dev" "libcurl4-openssl-dev" "meson" "libdbus-1-dev"
     "libgirepository1.0-dev" "vlc" "fzf" "fd-find" "ripgrep" "curl" "shellcheck" "python3-pip"
