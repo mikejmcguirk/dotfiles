@@ -34,6 +34,7 @@ config.inactive_pane_hsb = {
     brightness = 0.4,
 }
 
+config.front_end = "OpenGL"
 config.default_cursor_style = "BlinkingBar"
 config.force_reverse_video_cursor = true
 config.cursor_blink_rate = 650
