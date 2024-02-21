@@ -1,6 +1,6 @@
 #!/bin/bash
 
-btop_url="https://github.com/aristocratos/btop/releases/download/v1.3.0/btop-x86_64-linux-musl.tbz"
+btop_url="https://github.com/aristocratos/btop/releases/download/v1.3.2/btop-x86_64-linux-musl.tbz"
 btop_update=false
 
 nvim_url="https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz"
@@ -24,17 +24,17 @@ marksman_update=false
 nvm_url="https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh"
 nvm_install=false
 
-tmux_version="3.3a"
+tmux_version="3.4"
 tmux_filename="tmux-$tmux_version"
-tmux_url="https://github.com/tmux/tmux/releases/download/3.3a/$tmux_filename.tar.gz"
+tmux_url="https://github.com/tmux/tmux/releases/download/$tmux_version/$tmux_filename.tar.gz"
 tmux_install=false
 
 nerd_font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Cousine.zip"
 nerd_font_filename="Cousine.zip"
 add_nerd_font=false
 
-wezterm_url="https://github.com/wez/wezterm/releases/download/20240127-113634-bbcac864/wezterm-20240127-113634-bbcac864.Ubuntu22.04.deb"
-wezterm_filename="wezterm-20240127-113634-bbcac864.Ubuntu22.04.deb"
+wezterm_url="https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb"
+wezterm_filename="wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb"
 wezterm_install=false
 
 sudo apt-get update -y
@@ -318,6 +318,8 @@ npm i -g bash-language-server
 
 npm install -g markdownlint --save-dev
 npm install -g markdownlint-cli
+
+npm install -g tldr
 
 python3 -m pip install --upgrade pip
 pip install nvitop

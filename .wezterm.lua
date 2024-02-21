@@ -41,6 +41,24 @@ config.cursor_blink_rate = 650
 config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"
 
+config.keys = {
+    {
+        key = "n",
+        mods = "SUPER",
+        action = wezterm.action.DisableDefaultAssignment,
+    },
+    {
+        key = "n",
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.DisableDefaultAssignment,
+    },
+    {
+        key = "p",
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.DisableDefaultAssignment,
+    },
+}
+
 config.colors = {
     foreground = "#EEEEEC",
     background = "black",
