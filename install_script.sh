@@ -1,35 +1,35 @@
 #!/bin/bash
 
-btop_url="https://github.com/aristocratos/btop/releases/download/v1.3.2/btop-x86_64-linux-musl.tbz"
+btop_url="https://github.com/aristocratos/btop/releases/download/v1.4.0/btop-x86_64-linux-musl.tbz"
 btop_update=false
 
-nvim_url="https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz"
+nvim_url="https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz"
 nvim_fresh_install=false
 nvim_update=false
 
-lua_ls_url="https://github.com/LuaLS/lua-language-server/releases/download/3.7.4/lua-language-server-3.7.4-linux-x64.tar.gz"
-lua_ls_file="lua-language-server-3.7.4-linux-x64.tar.gz"
+lua_ls_url="https://github.com/LuaLS/lua-language-server/releases/download/3.12.0/lua-language-server-3.12.0-linux-x64.tar.gz"
+lua_ls_file="lua-language-server-3.12.0-linux-x64.tar.gz"
 lua_ls_fresh_install=false
 lua_ls_update=false
 
 # omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.8/omnisharp-linux-x64-net6.0.tar.gz"
-omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.11/omnisharp-linux-x64-net6.0.tar.gz"
+omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.12/omnisharp-linux-x64-net6.0.tar.gz"
 omnisharp_file="omnisharp-linux-x64-net6.0.tar.gz"
 omnisharp_update=false
 
-marksman_url="https://github.com/artempyanykh/marksman/releases/download/2023-12-09/marksman-linux-x64"
+marksman_url="https://github.com/artempyanykh/marksman/releases/download/2024-10-07/marksman-linux-x64"
 marksman_fresh_install=false
 marksman_update=false
 
-nvm_url="https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh"
+nvm_url="https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh"
 nvm_install=false
 
-tmux_version="3.4"
+tmux_version="3.5a"
 tmux_filename="tmux-$tmux_version"
 tmux_url="https://github.com/tmux/tmux/releases/download/$tmux_version/$tmux_filename.tar.gz"
 tmux_install=false
 
-nerd_font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Cousine.zip"
+nerd_font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Cousine.zip"
 nerd_font_filename="Cousine.zip"
 add_nerd_font=false
 
@@ -56,7 +56,8 @@ packages=("build-essential" "xclip" "cmake" "libssl-dev" "libsystemd-dev" "libpa
     "libgirepository1.0-dev" "vlc" "fzf" "fd-find" "ripgrep" "curl" "shellcheck" "python3-pip"
     "doxygen" "libmbedtls-dev" "zlib1g-dev" "libevent-dev" "ncurses-dev" "bison" "pkg-config" "gh"
     "dotnet-sdk-6.0" "aspnetcore-runtime-6.0" "libc6" "libgcc1" "libgcc-s1" "libgssapi-krb5-2"
-"libicu70" "liblttng-ust1" "libssl3" "libstdc++6" "libunwind8" "zlib1g" "peek")
+    "libicu70" "liblttng-ust1" "libssl3" "libstdc++6" "libunwind8" "zlib1g" "peek"
+"linux-tools-generic" "linux-cloud-tools-generic" "linux-tools-common")
 
 for pkg in "${packages[@]}"; do
     check_and_install "$pkg"
@@ -74,6 +75,7 @@ else
     git config user.name "Mike J. McGuirk"
     git config user.email "mike.j.mcguirk@gmail.com"
     git config --global credential.helper store
+    git config --global merge.commit false
 fi
 
 if dpkg -l | grep -qw brave-browser; then
@@ -305,40 +307,43 @@ nvm install v18.18.0 #For copilot
 nvm install --lts
 nvm alias default lts/*
 
-npm i -g npm npm i -g typescript-language-server typescript
-npm i -g eslint
-npm i -g eslint_d
-npm i -g vscode-langservers-extracted
-npm install -g --save-dev prettier
-npm install -g @fsouza/prettierd
-
-npm install -g dockerfile-language-server-nodejs
-npm install -g dockerfile-utils
-npm i -g bash-language-server
-
-npm install -g markdownlint --save-dev
-npm install -g markdownlint-cli
-
-npm install -g tldr
+# npm i -g typescript-language-server typescript
+# npm i -g eslint
+# npm i -g eslint_d
+# npm i -g vscode-langservers-extracted
+# npm install -g --save-dev prettier
+# npm install -g @fsouza/prettierd
+#
+# npm install -g dockerfile-language-server-nodejs
+# npm install -g dockerfile-utils
+# npm i -g bash-language-server
+#
+# npm install -g markdownlint --save-dev
+# npm install -g markdownlint-cli
+#
+# npm install -g tldr
 
 python3 -m pip install --upgrade pip
+
 pip install nvitop
-pip install isort
 pip install black
+pip install beautysh
+pip install isort
 pip install ruff-lsp
 pip install ruff
 pip install python-lsp-server[all]
-pip install beautysh
+pip install numpy
 pip list --outdated --format=columns | tail -n +3 | awk '{print $1}' | xargs -n1 pip install -U
 # pip can brick packages if it cannot resolve dependencies properly during update
 # Key packages are manually reinstalled here to ensure they are not broken
 pip install nvitop
-pip install isort
 pip install black
+pip install beautysh
+pip install isort
 pip install ruff-lsp
 pip install ruff
 pip install python-lsp-server[all]
-pip install beautysh
+pip install numpy
 
 if [ ! -d ~/.fonts ]; then
     mkdir ~/.fonts
