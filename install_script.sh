@@ -140,6 +140,14 @@ if [ ! -f ~/.cargo/bin/tokei ]; then
     cargo install tokei
 fi
 
+# Prevent conflicts
+sudo apt-get remove ripgrep
+
+if [ ! -f ~/.cargo/bin/rg ]; then
+    echo "ripgrep not installed. Installing now..."
+    cargo install --features 'pcre2' ripgrep # For Perl Compatible Regex
+fi
+
 if [ ! -f ~/.cargo/bin/cargo-install-update ]; then
     echo "cargo-update is not installed. Installing now..."
     cargo install cargo-update
