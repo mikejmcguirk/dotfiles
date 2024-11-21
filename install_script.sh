@@ -334,24 +334,16 @@ nvm alias default lts/*
 python3 -m pip install --upgrade pip
 
 pip install nvitop
-pip install black
 pip install beautysh
-pip install isort
-pip install ruff-lsp
-pip install ruff
-pip install python-lsp-server[all]
 pip install numpy
+pip install ruff
 pip list --outdated --format=columns | tail -n +3 | awk '{print $1}' | xargs -n1 pip install -U
 # pip can brick packages if it cannot resolve dependencies properly during update
 # Key packages are manually reinstalled here to ensure they are not broken
 pip install nvitop
-pip install black
 pip install beautysh
-pip install isort
-pip install ruff-lsp
-pip install ruff
-pip install python-lsp-server[all]
 pip install numpy
+pip install ruff
 
 if [ ! -d ~/.fonts ]; then
     mkdir ~/.fonts
