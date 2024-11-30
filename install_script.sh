@@ -337,6 +337,7 @@ pip install nvitop
 pip install beautysh
 pip install numpy
 pip install ruff
+pip install python-lsp-server[all]
 pip list --outdated --format=columns | tail -n +3 | awk '{print $1}' | xargs -n1 pip install -U
 # pip can brick packages if it cannot resolve dependencies properly during update
 # Key packages are manually reinstalled here to ensure they are not broken
@@ -344,6 +345,7 @@ pip install nvitop
 pip install beautysh
 pip install numpy
 pip install ruff
+pip install python-lsp-server[all]
 
 if [ ! -d ~/.fonts ]; then
     mkdir ~/.fonts
