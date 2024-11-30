@@ -57,7 +57,7 @@ packages=("build-essential" "xclip" "cmake" "libssl-dev" "libsystemd-dev" "libpa
     "doxygen" "libmbedtls-dev" "zlib1g-dev" "libevent-dev" "ncurses-dev" "bison" "pkg-config" "gh"
     "dotnet-sdk-6.0" "aspnetcore-runtime-6.0" "libc6" "libgcc1" "libgcc-s1" "libgssapi-krb5-2"
     "libicu70" "liblttng-ust1" "libssl3" "libstdc++6" "libunwind8" "zlib1g" "peek"
-"linux-tools-generic" "linux-cloud-tools-generic" "linux-tools-common")
+"linux-tools-generic" "linux-cloud-tools-generic" "linux-tools-common" "sqlite3" "sqlitebrowser")
 
 for pkg in "${packages[@]}"; do
     check_and_install "$pkg"

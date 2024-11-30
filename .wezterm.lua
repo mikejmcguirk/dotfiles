@@ -1,14 +1,11 @@
 local wezterm = require("wezterm")
-
 local config = {}
-
 if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
 local font = wezterm.font("Cousine Nerd Font Mono", { weight = "Regular" })
 local font_size = 11.0
-
 config.font = font
 config.font_size = font_size
 
@@ -26,7 +23,6 @@ config.window_padding = {
     top = 1,
     bottom = 1,
 }
-
 config.window_background_opacity = 0.85
 
 config.inactive_pane_hsb = {
@@ -35,6 +31,7 @@ config.inactive_pane_hsb = {
 }
 
 -- config.front_end = "OpenGL"
+
 config.default_cursor_style = "BlinkingBar"
 config.force_reverse_video_cursor = true
 config.cursor_blink_rate = 650
