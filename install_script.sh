@@ -369,6 +369,7 @@ if $go_update; then
     tar -C /usr/local -xzf ~/.local/$go_tar
     go install mvdan.cc/gofumpt@latest
     go install golang.org/x/tools/gopls@latest
+    go install github.com/nametake/golangci-lint-langserver@latest
 
     curl -sSfL $go_lint | sh -s -- -b $(go env GOPATH)/bin v1.61.0
 fi
