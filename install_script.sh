@@ -367,6 +367,7 @@ if $go_update; then
     wget -P ~/.local $go_dl_url
     tar -C /usr/local -xzf ~/.local/$go_tar
     go install mvdan.cc/gofumpt@latest
+    go install golang.org/x/tools/gopls@latest
 fi
 
 if $add_nerd_font; then
