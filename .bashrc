@@ -134,6 +134,7 @@ nvm alias default lts/*
 export PATH=$PATH:/home/mjm/.local/bin
 export PATH=$PATH:/home/mjm/projects/retdec-install/bin
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin
 
 export DisableCopilot="false"
 export NvimTheme="delta"
