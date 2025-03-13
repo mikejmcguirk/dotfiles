@@ -35,6 +35,7 @@ add_nerd_font=false
 
 go_dl_url="https://go.dev/dl/go1.24.1.linux-amd64.tar.gz"
 go_tar="go1.24.1.linux-amd64.tar.gz"
+go_lint="https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh"
 go_update=false
 
 wezterm_url="https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb"
@@ -368,6 +369,8 @@ if $go_update; then
     tar -C /usr/local -xzf ~/.local/$go_tar
     go install mvdan.cc/gofumpt@latest
     go install golang.org/x/tools/gopls@latest
+
+    curl -sSfL $go_lint | sh -s -- -b $(go env GOPATH)/bin v1.61.0
 fi
 
 if $add_nerd_font; then
