@@ -3,21 +3,21 @@
 btop_url="https://github.com/aristocratos/btop/releases/download/v1.4.0/btop-x86_64-linux-musl.tbz"
 btop_update=false
 
-nvim_url="https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz"
+nvim_url="https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.tar.gz"
 nvim_fresh_install=false
-nvim_update=false
+nvim_update=true
 
-lua_ls_url="https://github.com/LuaLS/lua-language-server/releases/download/3.12.0/lua-language-server-3.12.0-linux-x64.tar.gz"
-lua_ls_file="lua-language-server-3.12.0-linux-x64.tar.gz"
+lua_ls_url="https://github.com/LuaLS/lua-language-server/releases/download/3.13.6/lua-language-server-3.13.6-linux-x64.tar.gz"
+lua_ls_file="lua-language-server-3.13.6-linux-x64.tar.gz"
 lua_ls_fresh_install=false
 lua_ls_update=false
 
 # omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.8/omnisharp-linux-x64-net6.0.tar.gz"
-omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.12/omnisharp-linux-x64-net6.0.tar.gz"
+omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.13/omnisharp-linux-x64-net6.0.tar.gz"
 omnisharp_file="omnisharp-linux-x64-net6.0.tar.gz"
 omnisharp_update=false
 
-marksman_url="https://github.com/artempyanykh/marksman/releases/download/2024-10-07/marksman-linux-x64"
+marksman_url="https://github.com/artempyanykh/marksman/releases/download/2024-12-18/marksman-linux-x64"
 marksman_fresh_install=false
 marksman_update=false
 
@@ -29,9 +29,13 @@ tmux_filename="tmux-$tmux_version"
 tmux_url="https://github.com/tmux/tmux/releases/download/$tmux_version/$tmux_filename.tar.gz"
 tmux_install=false
 
-nerd_font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Cousine.zip"
+nerd_font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Cousine.zip"
 nerd_font_filename="Cousine.zip"
 add_nerd_font=false
+
+go_dl_url="https://go.dev/dl/go1.24.1.linux-amd64.tar.gz"
+go_tar="go1.24.1.linux-amd64.tar.gz"
+go_update=false
 
 wezterm_url="https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb"
 wezterm_filename="wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb"
@@ -56,8 +60,8 @@ packages=("build-essential" "xclip" "cmake" "libssl-dev" "libsystemd-dev" "libpa
     "libgirepository1.0-dev" "vlc" "fzf" "fd-find" "ripgrep" "curl" "shellcheck" "python3-pip"
     "doxygen" "libmbedtls-dev" "zlib1g-dev" "libevent-dev" "ncurses-dev" "bison" "pkg-config" "gh"
     "dotnet-sdk-6.0" "aspnetcore-runtime-6.0" "libc6" "libgcc1" "libgcc-s1" "libgssapi-krb5-2"
-    "libicu70" "liblttng-ust1" "libssl3" "libstdc++6" "libunwind8" "zlib1g" "peek"
-"linux-tools-generic" "linux-cloud-tools-generic" "linux-tools-common" "sqlite3" "sqlitebrowser")
+    "libicu70" "liblttng-ust1" "libssl3" "libstdc++6" "libunwind8" "zlib1g" "peek" "llvm"
+"sqlite3" "sqlitebrowser" "linux-tools-common" "linux-tools-generic")
 
 for pkg in "${packages[@]}"; do
     check_and_install "$pkg"
@@ -140,8 +144,13 @@ if [ ! -f ~/.cargo/bin/tokei ]; then
     cargo install tokei
 fi
 
+if [ ! -f ~/.cargo/bin/flamegraph ]; then
+    echo "flamegraph is not installed. Installing now..."
+    cargo install flamegraph
+fi
+
 # Prevent conflicts
-sudo apt-get remove ripgrep
+sudo apt-get remove -y ripgrep
 
 if [ ! -f ~/.cargo/bin/rg ]; then
     echo "ripgrep not installed. Installing now..."
@@ -181,9 +190,9 @@ nvim_update() {
     if [ -d ~/.local/bin/nvim-linux64 ]; then
         rm -rf ~/.local/bin/nvim-linux64
     fi
-    mkdir ~/.local/bin/nvim-linux64
-    tar xzvf ~/.local/bin/nvim-linux64.tar.gz -C ~/.local/bin
-    rm ~/.local/bin/nvim-linux64.tar.gz
+    # mkdir ~/.local/bin/nvim-linux64
+    tar xzvf ~/.local/bin/nvim-linux-x86_64.tar.gz -C ~/.local/bin
+    rm ~/.local/bin/nvim-linux-x86_64.tar.gz
 }
 
 nvim_fresh_install() {
@@ -198,7 +207,7 @@ nvim_fresh_install() {
     mv ~/.config/Neovim-Win10-Lazy/* nvim
     rm -rf ~/.config/Neovim-Win10-Lazy
 
-    ln -s ~/.local/bin/nvim-linux64/bin/nvim ~/.local/bin/nvim
+    ln -s ~/.local/bin/nvim-linux-x86_64/bin/nvim ~/.local/bin/nvim
 }
 
 if $nvim_fresh_install; then
@@ -311,7 +320,7 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-nvm install v18.18.0 #For copilot
+# nvm install v18.18.0 #For copilot
 nvm install --lts
 nvm alias default lts/*
 
@@ -324,7 +333,7 @@ nvm alias default lts/*
 #
 # npm install -g dockerfile-language-server-nodejs
 # npm install -g dockerfile-utils
-# npm i -g bash-language-server
+npm i -g bash-language-server
 #
 # npm install -g markdownlint --save-dev
 # npm install -g markdownlint-cli
@@ -336,6 +345,7 @@ python3 -m pip install --upgrade pip
 pip install nvitop
 pip install beautysh
 pip install numpy
+pip install sqlfluff
 pip install ruff
 pip install python-lsp-server[all]
 pip list --outdated --format=columns | tail -n +3 | awk '{print $1}' | xargs -n1 pip install -U
@@ -344,11 +354,19 @@ pip list --outdated --format=columns | tail -n +3 | awk '{print $1}' | xargs -n1
 pip install nvitop
 pip install beautysh
 pip install numpy
+pip install sqlfluff
 pip install ruff
 pip install python-lsp-server[all]
 
 if [ ! -d ~/.fonts ]; then
     mkdir ~/.fonts
+fi
+
+if $go_update; then
+    rm -rf /usr/local/go
+    wget -P ~/.local $go_dl_url
+    tar -C /usr/local -xzf ~/.local/$go_tar
+    export PATH=$PATH:/usr/local/go/bin
 fi
 
 if $add_nerd_font; then

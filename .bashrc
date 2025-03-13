@@ -132,6 +132,7 @@ export NVM_DIR="$HOME/.nvm"
 nvm alias default lts/*
 
 export PATH=$PATH:/home/mjm/.local/bin
+export PATH=$PATH:/home/mjm/projects/retdec-install/bin
 
 export DisableCopilot="false"
 export NvimTheme="delta"
@@ -247,7 +248,7 @@ create_py_nogit() {
 
 alias create-py-nogit="create_py_nogit"
 
-create_py_aoc() {
+create_aoc_py() {
     cp ~/default_programming_files/advent_of_code/part_one.py .
     cp ~/default_programming_files/advent_of_code/part_two.py .
 
