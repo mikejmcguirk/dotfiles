@@ -366,7 +366,7 @@ if $go_update; then
     rm -rf /usr/local/go
     wget -P ~/.local $go_dl_url
     tar -C /usr/local -xzf ~/.local/$go_tar
-    export PATH=$PATH:/usr/local/go/bin
+    go install mvdan.cc/gofumpt@latest
 fi
 
 if $add_nerd_font; then
