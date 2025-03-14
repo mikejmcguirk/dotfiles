@@ -19,7 +19,7 @@ config.tab_bar_at_bottom = true
 config.window_padding = {
     left = 1,
     right = 1,
-    top = 1,
+    top = 0,
     bottom = 0,
 }
 
@@ -132,10 +132,22 @@ config.keys = {
 
 local purp_text = "#d598ff"
 local purp_bg = "#2b2233"
-
 local cyan_text = "#98fffb"
-
 local yellow_text = "#edff98"
+
+wezterm.on("gui-startup", function()
+    local tab1, _, window = wezterm.mux.spawn_window({ cwd = wezterm.home_dir })
+    local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/obsidian/main" })
+    local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/.config/nvim" })
+    local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/programming" })
+    local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/programming/yaps/" })
+    local _, _ = window:spawn_tab({
+        cwd = wezterm.home_dir .. "/programming/code_challenges/advent_of_code/",
+    })
+    local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/programming/nvim_plugin_dev" })
+
+    tab1:activate()
+end)
 
 config.colors = {
     foreground = "#EEEEEC",
@@ -193,42 +205,9 @@ config.colors = {
     },
 }
 
-wezterm.on("gui-startup", function()
-    local tab1, _, window = wezterm.mux.spawn_window({
-        cwd = wezterm.home_dir,
-    })
-
-    local _, _ = window:spawn_tab({
-        cwd = wezterm.home_dir .. "/obsidian/main",
-    })
-
-    local _, _ = window:spawn_tab({
-        cwd = wezterm.home_dir .. "/.config/nvim",
-    })
-
-    local _, _ = window:spawn_tab({
-        cwd = wezterm.home_dir .. "/programming",
-    })
-
-    local _, _ = window:spawn_tab({
-        cwd = wezterm.home_dir .. "/programming/yaps/",
-    })
-
-    local _, _ = window:spawn_tab({
-        cwd = wezterm.home_dir .. "/programming/code_challenges/advent_of_code/",
-    })
-
-    local _, _ = window:spawn_tab({
-        cwd = wezterm.home_dir .. "/programming/nvim_plugin_dev",
-    })
-
-    tab1:activate()
-end)
-
 config.status_update_interval = 5000
 
-wezterm.on("update-status", function(window, pane)
-    local time = wezterm.strftime("%H:%M:%S")
+wezterm.on("update-status", function(window, _)
     local elements = {}
 
     if window:leader_is_active() then
@@ -237,6 +216,22 @@ wezterm.on("update-status", function(window, pane)
         table.insert(elements, { Text = " LDR " })
     end
 
+    local tab = window:active_tab()
+    local panes = tab:panes_with_info()
+    local is_zoomed = false
+    for _, p in ipairs(panes) do
+        if p.is_active and p.is_zoomed then
+            is_zoomed = true
+        end
+    end
+
+    if is_zoomed then
+        table.insert(elements, { Background = { Color = "#4c7f7d" } })
+        table.insert(elements, { Foreground = { Color = cyan_text } })
+        table.insert(elements, { Text = " ZOOM " })
+    end
+
+    local time = wezterm.strftime("%H:%M:%S")
     table.insert(elements, { Background = { Color = purp_bg } })
     table.insert(elements, { Foreground = { Color = purp_text } })
     table.insert(elements, { Text = " " .. time .. " " })
