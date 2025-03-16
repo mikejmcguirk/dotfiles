@@ -61,6 +61,8 @@ end
 
 config.disable_default_key_bindings = true
 config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 2000 }
+-- TODO: Create an equivalent of <C-w>= in Nvim for panes
+-- TODO: Should also have an equivalent of the <C-w>o command in Nvim
 config.keys = {
     -- Pane Management
     {
@@ -83,7 +85,6 @@ config.keys = {
         mods = "LEADER",
         action = wezterm.action.CloseCurrentPane({ confirm = true }),
     },
-    -- TODO: Is there a way to equalize the pane sizes?
     {
         key = "LeftArrow",
         mods = "CTRL|SHIFT",
@@ -124,10 +125,16 @@ config.keys = {
     { key = "c", mods = "CTRL|SHIFT", action = wezterm.action.CopyTo("Clipboard") },
     { key = "v", mods = "CTRL|SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
     { key = "Enter", mods = "ALT", action = wezterm.action.ToggleFullScreen },
-    { key = "l", mods = "LEADER", action = wezterm.action.ShowDebugOverlay },
+    -- I have not figured out a way on Windows to make hjkl navigation work seamlessly with Neovim
+    -- The simplest workaround for this at the moment is to use leader-hjkl for pane navigation
+    -- This overwrites the defaultish map for debug navigation, so we put it at g for now
+    -- for consistency. If we can make ctrl-hjkl work for navigation on Windows, this should be
+    -- changed back to its default of l
+    { key = "g", mods = "LEADER", action = wezterm.action.ShowDebugOverlay },
     -- Don't pass obnoxious key codes
     { key = "J", mods = "CTRL|SHIFT", action = wezterm.action.Nop },
     { key = "H", mods = "CTRL|SHIFT", action = wezterm.action.Nop },
+    { key = "Z", mods = "CTRL|SHIFT", action = wezterm.action.Nop },
 }
 
 local purp_text = "#d598ff"
