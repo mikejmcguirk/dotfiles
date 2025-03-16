@@ -238,10 +238,10 @@ wezterm.on("update-status", function(window, _)
         table.insert(elements, { Text = " ZOOM " })
     end
 
-    local time = wezterm.strftime("%H:%M:%S")
+    local datetime = wezterm.strftime("%Y-%m-%d %H:%M:%S")
     table.insert(elements, { Background = { Color = purp_bg } })
     table.insert(elements, { Foreground = { Color = purp_text } })
-    table.insert(elements, { Text = " " .. time .. " " })
+    table.insert(elements, { Text = " " .. datetime .. " " })
 
     window:set_right_status(wezterm.format(elements))
 end)
