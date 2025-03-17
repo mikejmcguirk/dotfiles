@@ -10,7 +10,7 @@ local font_size = 11.0
 config.font = font
 config.font_size = font_size
 
-config.max_fps = 60 -- My monitors are old
+config.max_fps = 120 -- Twice my refresh rate seems to be best
 
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
