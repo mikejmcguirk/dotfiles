@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# URLs and flags for installs
+
 btop_url="https://github.com/aristocratos/btop/releases/download/v1.4.0/btop-x86_64-linux-musl.tbz"
 btop_update=false
 
@@ -12,22 +14,8 @@ lua_ls_file="lua-language-server-3.13.6-linux-x64.tar.gz"
 lua_ls_fresh_install=false
 lua_ls_update=false
 
-# omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.8/omnisharp-linux-x64-net6.0.tar.gz"
-omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.13/omnisharp-linux-x64-net6.0.tar.gz"
-omnisharp_file="omnisharp-linux-x64-net6.0.tar.gz"
-omnisharp_update=false
-
-marksman_url="https://github.com/artempyanykh/marksman/releases/download/2024-12-18/marksman-linux-x64"
-marksman_fresh_install=false
-marksman_update=false
-
 nvm_url="https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh"
 nvm_install=false
-
-tmux_version="3.5a"
-tmux_filename="tmux-$tmux_version"
-tmux_url="https://github.com/tmux/tmux/releases/download/$tmux_version/$tmux_filename.tar.gz"
-tmux_install=false
 
 nerd_font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Cousine.zip"
 nerd_font_filename="Cousine.zip"
@@ -41,6 +29,8 @@ go_update=false
 wezterm_url="https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb"
 wezterm_filename="wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb"
 wezterm_install=false
+
+# Handle Linux packages. Various tools/dependencies
 
 sudo apt-get update -y
 sudo apt-get upgrade -y
@@ -68,8 +58,7 @@ for pkg in "${packages[@]}"; do
     check_and_install "$pkg"
 done
 
-dotnet tool install csharpier -g
-dotnet tool update csharpier -g
+# Git
 
 if dpkg -l | grep -qw git-all; then
     echo "git-all is already installed."
@@ -83,6 +72,8 @@ else
     git config --global merge.commit false
 fi
 
+# Brave Browser
+
 if dpkg -l | grep -qw brave-browser; then
     echo "brave-browser is already installed."
 else
@@ -93,6 +84,8 @@ else
     sudo apt update
     sudo apt-get install -y brave-browser
 fi
+
+# Docker
 
 docker_packages=("docker-ce" "docker-ce-cli" "containerd.io" "docker-buildx-plugin" "docker-compose-plugin")
 missing_docker_packages=false
@@ -120,6 +113,8 @@ if [ "$missing_docker_packages" = true ]; then
   sudo apt-get update
   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 fi
+
+# Rust
 
 if [ ! -d ~/.cargo ]; then
     # https://rustup.rs/
@@ -170,6 +165,8 @@ if [ ! -d ~/.local/bin ]; then
     mkdir ~/.local/bin
 fi
 
+# Various Tools
+
 if $wezterm_install; then
     # https://wezfurlong.org/wezterm/install/linux.html
     curl -LO $wezterm_url
@@ -219,6 +216,8 @@ else
     echo 'No actions to take for NeoVim'
 fi
 
+# Lua LS
+
 lua_ls_update() {
     wget -P ~/.local/bin $lua_ls_url
     if [ -d ~/.local/bin/lua_ls ]; then
@@ -243,73 +242,8 @@ else
     echo 'lua_ls_update set to false'
 fi
 
-omnisharp_update() {
-    wget -P ~/.local/bin $omnisharp_url
-    if [ -d ~/.local/bin/omnisharp ]; then
-        rm -rf ~/.local/bin/omnisharp
-    fi
-    mkdir ~/.local/bin/omnisharp
-    tar xzvf ~/.local/bin/$omnisharp_file -C ~/.local/bin/omnisharp
-    rm ~/.local/bin/$omnisharp_file
 
-    echo '{
-        "RoslynExtensionsOptions": {
-            "enableDecompilationSupport": true
-        }
-    }' > ~/.local/bin/omnisharp/omnisharp.json
-}
-
-if $omnisharp_update; then
-    echo "Updating OmniSharp..."
-    omnisharp_update
-else
-    echo 'omnisharp_update set to false'
-fi
-
-marksman_update() {
-    wget -P ~/.local/bin $marksman_url
-    if [ -d ~/.local/bin/marksman_dir ]; then
-        rm -rf ~/.local/bin/marksman_dir
-    fi
-    mkdir ~/.local/bin/marksman_dir
-    mv ~/.local/bin/marksman-linux-x64 ~/.local/bin/marksman_dir/marksman-linux-x64
-    sudo chmod +x ~/.local/bin/marksman_dir/marksman-linux-x64
-}
-
-marksman_fresh_install() {
-    marksman_update
-
-    ln -s ~/.local/bin/marksman_dir/marksman-linux-x64 ~/.local/bin/marksman
-}
-
-if $marksman_fresh_install; then
-    marksman_fresh_install
-elif $marksman_update; then
-    echo "Updating marksman..."
-    marksman_update
-else
-    echo 'marksman_update set to false'
-fi
-
-if $tmux_install; then
-    echo "Installing tmux..."
-    wget -P ~/.local/bin $tmux_url
-    tar -xvzf ~/.local/bin/$tmux_filename.tar.gz
-    if [ -d "$tmux_filename" ]; then
-        cd "$tmux_filename"
-        ./configure
-        make && sudo make install
-        cd ~
-
-        if [ ! -d ~/.config/tmux/plugins ]; then
-            mkdir -p ~/.config/tmux/plugins
-        fi
-        git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
-        git clone https://github.com/wfxr/tmux-power ~/.config/tmux/plugins/tmux-power
-    else
-        echo "Directory $tmux_filename does not exist."
-    fi
-fi
+# Javascript Ecosystem
 
 if $nvm_install; then
     echo "Installing nvm..."
@@ -325,21 +259,18 @@ export NVM_DIR="$HOME/.nvm"
 nvm install --lts
 nvm alias default lts/*
 
-# npm i -g typescript-language-server typescript
-# npm i -g eslint
-# npm i -g eslint_d
-# npm i -g vscode-langservers-extracted
-# npm install -g --save-dev prettier
-# npm install -g @fsouza/prettierd
+npm i -g typescript-language-server typescript
+npm i -g eslint
+npm i -g eslint_d
+npm i -g vscode-langservers-extracted
+npm install -g --save-dev prettier
+npm install -g @fsouza/prettierd
 #
-# npm install -g dockerfile-language-server-nodejs
-# npm install -g dockerfile-utils
+npm install -g dockerfile-language-server-nodejs
+npm install -g dockerfile-utils
 npm i -g bash-language-server
-#
-# npm install -g markdownlint --save-dev
-# npm install -g markdownlint-cli
-#
-# npm install -g tldr
+
+# Python Ecosystem
 
 python3 -m pip install --upgrade pip
 
@@ -359,9 +290,7 @@ pip install sqlfluff
 pip install ruff
 pip install python-lsp-server[all]
 
-if [ ! -d ~/.fonts ]; then
-    mkdir ~/.fonts
-fi
+# Go Ecosystem
 
 if $go_update; then
     rm -rf /usr/local/go
@@ -372,6 +301,12 @@ if $go_update; then
     go install github.com/nametake/golangci-lint-langserver@latest
 
     curl -sSfL $go_lint | sh -s -- -b $(go env GOPATH)/bin v1.61.0
+fi
+
+# Nerd Font
+
+if [ ! -d ~/.fonts ]; then
+    mkdir ~/.fonts
 fi
 
 if $add_nerd_font; then
@@ -401,3 +336,97 @@ sudo apt-get autoclean -y
 # UPDATE FOLLOW-UP STEPS:
 #
 # Enter Nvim and run Lazy update
+
+###########
+# OLD STUFF
+###########
+
+# omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.8/omnisharp-linux-x64-net6.0.tar.gz"
+# omnisharp_url="https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.13/omnisharp-linux-x64-net6.0.tar.gz"
+# omnisharp_file="omnisharp-linux-x64-net6.0.tar.gz"
+# omnisharp_update=false
+#
+# marksman_url="https://github.com/artempyanykh/marksman/releases/download/2024-12-18/marksman-linux-x64"
+# marksman_fresh_install=false
+# marksman_update=false
+
+# tmux_version="3.5a"
+# tmux_filename="tmux-$tmux_version"
+# tmux_url="https://github.com/tmux/tmux/releases/download/$tmux_version/$tmux_filename.tar.gz"
+# tmux_install=false
+
+# dotnet tool install csharpier -g
+# dotnet tool update csharpier -g
+
+# omnisharp_update() {
+#     wget -P ~/.local/bin $omnisharp_url
+#     if [ -d ~/.local/bin/omnisharp ]; then
+#         rm -rf ~/.local/bin/omnisharp
+#     fi
+#     mkdir ~/.local/bin/omnisharp
+#     tar xzvf ~/.local/bin/$omnisharp_file -C ~/.local/bin/omnisharp
+#     rm ~/.local/bin/$omnisharp_file
+#
+#     echo '{
+#         "RoslynExtensionsOptions": {
+#             "enableDecompilationSupport": true
+#         }
+#     }' > ~/.local/bin/omnisharp/omnisharp.json
+# }
+
+# if $omnisharp_update; then
+#     echo "Updating OmniSharp..."
+#     omnisharp_update
+# else
+#     echo 'omnisharp_update set to false'
+# fi
+
+# marksman_update() {
+#     wget -P ~/.local/bin $marksman_url
+#     if [ -d ~/.local/bin/marksman_dir ]; then
+#         rm -rf ~/.local/bin/marksman_dir
+#     fi
+#     mkdir ~/.local/bin/marksman_dir
+#     mv ~/.local/bin/marksman-linux-x64 ~/.local/bin/marksman_dir/marksman-linux-x64
+#     sudo chmod +x ~/.local/bin/marksman_dir/marksman-linux-x64
+# }
+#
+# marksman_fresh_install() {
+#     marksman_update
+#
+#     ln -s ~/.local/bin/marksman_dir/marksman-linux-x64 ~/.local/bin/marksman
+# }
+#
+# if $marksman_fresh_install; then
+#     marksman_fresh_install
+# elif $marksman_update; then
+#     echo "Updating marksman..."
+#     marksman_update
+# else
+#     echo 'marksman_update set to false'
+# fi
+#
+# if $tmux_install; then
+#     echo "Installing tmux..."
+#     wget -P ~/.local/bin $tmux_url
+#     tar -xvzf ~/.local/bin/$tmux_filename.tar.gz
+#     if [ -d "$tmux_filename" ]; then
+#         cd "$tmux_filename"
+#         ./configure
+#         make && sudo make install
+#         cd ~
+#
+#         if [ ! -d ~/.config/tmux/plugins ]; then
+#             mkdir -p ~/.config/tmux/plugins
+#         fi
+#         git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+#         git clone https://github.com/wfxr/tmux-power ~/.config/tmux/plugins/tmux-power
+#     else
+#         echo "Directory $tmux_filename does not exist."
+#     fi
+# fi
+
+# npm install -g markdownlint --save-dev
+# npm install -g markdownlint-cli
+
+# npm install -g tldr # Uses deprecated module
