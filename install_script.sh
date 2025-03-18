@@ -270,6 +270,8 @@ npm install -g dockerfile-language-server-nodejs
 npm install -g dockerfile-utils
 npm i -g bash-language-server
 
+npm i -g yarn
+
 # Python Ecosystem
 
 python3 -m pip install --upgrade pip
