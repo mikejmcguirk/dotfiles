@@ -63,6 +63,7 @@ config.disable_default_key_bindings = true
 config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 2000 }
 -- TODO: Create an equivalent of <C-w>= in Nvim for panes
 -- TODO: Should also have an equivalent of the <C-w>o command in Nvim
+-- TODO: Zoom should not zoom in if we are in the only pane
 config.keys = {
     -- Pane Management
     {

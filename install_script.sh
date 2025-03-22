@@ -2,12 +2,14 @@
 
 # URLs and flags for installs
 
+general_fresh_install=false
+
 btop_url="https://github.com/aristocratos/btop/releases/download/v1.4.0/btop-x86_64-linux-musl.tbz"
 btop_update=false
 
 nvim_url="https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.tar.gz"
 nvim_fresh_install=false
-nvim_update=true
+nvim_update=false
 
 lua_ls_url="https://github.com/LuaLS/lua-language-server/releases/download/3.13.6/lua-language-server-3.13.6-linux-x64.tar.gz"
 lua_ls_file="lua-language-server-3.13.6-linux-x64.tar.gz"
@@ -29,6 +31,12 @@ go_update=false
 wezterm_url="https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb"
 wezterm_filename="wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb"
 wezterm_install=false
+
+# Fix function keys not working on Keychron K2
+if $general_fresh_install; then
+    echo "options hid_apple fnmode=2" | sudo tee /etc/modprobe.d/hid_apple.conf
+    sudo update-initramfs -u
+fi
 
 # Handle Linux packages. Various tools/dependencies
 
@@ -52,7 +60,7 @@ packages=("build-essential" "xclip" "cmake" "libssl-dev" "libsystemd-dev" "libpa
     "doxygen" "libmbedtls-dev" "zlib1g-dev" "libevent-dev" "ncurses-dev" "bison" "pkg-config" "gh"
     "dotnet-sdk-6.0" "aspnetcore-runtime-6.0" "libc6" "libgcc1" "libgcc-s1" "libgssapi-krb5-2"
     "libicu70" "liblttng-ust1" "libssl3" "libstdc++6" "libunwind8" "zlib1g" "peek" "llvm"
-"sqlite3" "sqlitebrowser" "linux-tools-common" "linux-tools-generic")
+"sqlite3" "sqlitebrowser" "linux-tools-common" "linux-tools-generic" "virtualbox")
 
 for pkg in "${packages[@]}"; do
     check_and_install "$pkg"
