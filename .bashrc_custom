@@ -1,0 +1,153 @@
+set_tab_title() {
+    local dir=$(basename "$PWD")
+    printf '\e]0;%s\a' "$dir"
+}
+
+# Run this before every prompt
+PROMPT_COMMAND='set_tab_title'
+
+export NvimTheme="delta"
+export DOTNET_CLI_TELEMETRY_OPTOUT=1 # Bad, Microsoft
+
+alias config="git --git-dir=\$HOME/.cfg/ --work-tree=\$HOME"
+export EDITOR=nvim
+
+if [ -x /usr/bin/dircolors ]; then
+    if [ -r ~/.dircolors ]; then
+        eval "$(dircolors -b ~/.dircolors)"
+    else
+        eval "$(dircolors -b)"
+    fi
+    alias ls='ls -lhA --color=auto'
+fi
+
+shopt -s dotglob
+
+# for_creating_all() {
+#     cp "$HOME/default_programming_files/.gitignore" .
+#     cp "$HOME/default_programming_files/.markdownlint.jsonc" .
+#     git init
+#     git add .
+# }
+#
+# for_creating_all_nogit() {
+#     cp "$HOME/default_programming_files/.markdownlint.jsonc" .
+# }
+#
+# for_javascript() {
+#     cp "$HOME/default_programming_files/.prettierrc.json" .
+#     cp "$HOME/default_programming_files/.eslintrc.json" .
+#     cp "$HOME/default_programming_files/package.json" .
+#
+#     npm install --save-dev eslint-config-prettier
+#     # Future proofing for flat config
+#     npm install globals
+#     npm install @eslint/js
+# }
+#
+# alias create-html-css-js="create_html_css_js"
+#
+# create_js_nogit() {
+#     cp "$HOME/default_programming_files/index.js" .
+#
+#     for_javascript
+#     for_creating_all_nogit
+# }
+#
+# create_html_css_js() {
+#     cp "$HOME/default_programming_files/index.html" .
+#     cp "$HOME/default_programming_files/style.css" .
+#     cp "$HOME/default_programming_files/script.js" .
+#
+#     for_javascript_all
+#     for_creating_all
+# }
+#
+# alias create-js-nogit="create_js_nogit"
+#
+# for_cs() {
+#     cp "$HOME/default_programming_files/.csharpierrc.json" .
+# }
+#
+# std_cs() {
+#     cp "$HOME/default_programming_files/ProjectName.csproj" .
+#     cp "$HOME/default_programming_files/Program.cs" .
+# }
+#
+# create_cs() {
+#     std_cs
+#     for_cs
+#     for_creating_all
+# }
+#
+# alias create-cs="create_cs"
+#
+# create_cs_nogit() {
+#     std_cs
+#     for_cs
+#     for_creating_all_nogit
+# }
+#
+# alias create-cs-nogit="create_cs_nogit"
+#
+# create_aoc_cs() {
+#     cp "$HOME/default_programming_files/ProjectName.csproj" AdventOfCode.csproj
+#     cp "$HOME/default_programming_files/advent_of_code/Program.cs" .
+#     cp "$HOME/default_programming_files/advent_of_code/PartOne.cs" .
+#     cp "$HOME/default_programming_files/advent_of_code/PartTwo.cs" .
+#
+#     for_cs
+#
+#     touch test_data.txt
+#     touch puzzle_input.txt
+#
+#     for_creating_all_nogit
+# }
+#
+# alias create-aoc-cs="create_aoc_cs"
+#
+# for_py() {
+#     cp "$HOME/default_programming_files/ruff.toml" .
+# }
+# create_py() {
+#     for_py
+#
+#     for_creating_all
+# }
+#
+# alias create-py="create_py"
+#
+# create_py_nogit() {
+#     for_py
+#
+#     for_creating_all_nogit
+# }
+#
+# alias create-py-nogit="create_py_nogit"
+#
+# create_aoc_py() {
+#     cp "$HOME/default_programming_files/advent_of_code/part_one.py" .
+#     cp "$HOME/default_programming_files/advent_of_code/part_two.py" .
+#
+#     for_py
+#
+#     touch test_data.txt
+#     touch puzzle_input.txt
+#
+#     for_creating_all_nogit
+# }
+#
+# alias create-aoc-py="create_py_aoc"
+
+# Not used this days, but convenient
+# tmux_reload_bashrc() {
+#     if command -v tmux &> /dev/null; then
+#         for i in $(tmux list-windows -F "#{window_id}"); do
+#             tmux send-keys -t "$i" "source ~/.bashrc" Enter
+#         done
+#     else
+#         echo "tmux is not installed. Please install tmux to use this feature."
+#     fi
+# }
+#
+# alias tmux-reload-bashrc="tmux_reload_bashrc"
