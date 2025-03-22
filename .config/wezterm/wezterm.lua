@@ -147,12 +147,12 @@ wezterm.on("gui-startup", function()
     local tab1, _, window = wezterm.mux.spawn_window({ cwd = wezterm.home_dir })
     local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/obsidian/main" })
     local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/.config/nvim" })
-    local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/programming" })
-    local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/programming/yaps/" })
-    local _, _ = window:spawn_tab({
-        cwd = wezterm.home_dir .. "/programming/code_challenges/advent_of_code/",
-    })
-    local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/programming/nvim_plugin_dev" })
+    -- local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/programming" })
+    -- local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/programming/yaps/" })
+    -- local _, _ = window:spawn_tab({
+    --     cwd = wezterm.home_dir .. "/programming/code_challenges/advent_of_code/",
+    -- })
+    -- local _, _ = window:spawn_tab({ cwd = wezterm.home_dir .. "/programming/nvim_plugin_dev" })
 
     tab1:activate()
 end)

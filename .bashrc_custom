@@ -24,6 +24,7 @@ fi
 shopt -s dotglob
 
 # A take on ThePrimeagen's tmux-sessionizer
+# This assumes a Debian install so the command for fd is fdfind
 fdfzfwez() {
     local missing_deps=0
     if ! command -v fdfind >/dev/null 2>&1; then
