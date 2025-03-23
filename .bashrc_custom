@@ -1,12 +1,5 @@
-set_tab_title() {
-    local dir=$(basename "$PWD")
-    printf '\e]0;%s\a' "$dir"
-}
-
-# Run this before every prompt
-PROMPT_COMMAND='set_tab_title'
-
 export NvimTheme="delta"
+
 export DOTNET_CLI_TELEMETRY_OPTOUT=1 # Bad, Microsoft
 
 alias config="git --git-dir=\$HOME/.cfg/ --work-tree=\$HOME"
@@ -19,12 +12,75 @@ if [ -x /usr/bin/dircolors ]; then
         eval "$(dircolors -b)"
     fi
     alias ls='ls -lhA --color=auto'
+else
+    alias ls='ls -lhA'
 fi
 
 shopt -s dotglob
 
-# A take on ThePrimeagen's tmux-sessionizer
-# This assumes a Debian install so the command for fd is fdfind
+# Modified version of ThePrimeagen's sessionizer/windowizer code
+tmux_windowizer() {
+    local missing_deps=0
+    if ! command -v tmux >/dev/null 2>&1; then
+        echo "tmux not installed"
+        missing_deps=1
+    fi
+    if ! command -v fdfind >/dev/null 2>&1; then
+        echo "fdfind not installed"
+        missing_deps=1
+    fi
+    if ! command -v fzf >/dev/null 2>&1; then
+        echo "fzf not installed"
+        missing_deps=1
+    fi
+    if [ "$missing_deps" -eq 1 ]; then
+        return 1
+    fi
+
+    if [[ -z "$TMUX" ]]; then
+        echo "Not inside a tmux session"
+        return 1
+    fi
+    if ! pgrep tmux >/dev/null 2>&1; then
+        echo "tmux not running"
+        return 1
+    fi
+
+    local dir
+    if [ $# -eq 1 ]; then
+        dir="$1"
+    else
+        dir=$(fdfind --type d --base-directory "$HOME" --hidden --exclude '.git' --exclude '.cfg' | fzf)
+    fi
+
+    if [ -z "$dir" ]; then
+        return 0
+    fi
+
+    # Some hacking to turn the directory format into something that displays properly in
+    # the terminal prompt of the new window
+    # Want to avoid something like "~/./.config/tmux"
+    dir="${dir/#\~/$HOME}"
+    # NOTE: Do not put a quote around $dir or it breaks
+    dir=$(realpath $dir 2>/dev/null)
+    if [ ! -d "$dir" ]; then
+        echo "Error: '$dir' is not a valid directory."
+        return 1
+    fi
+
+    local window_name
+    window_name=$(basename "$dir" | tr . _)
+
+    tmux new-window -n "$window_name" -c "$dir"
+}
+
+alias fdw="tmux_windowizer"
+
+########
+# Unused
+########
+
+# Windowizer logic for Wezterm
 # fdfzfwez() {
 #     local missing_deps=0
 #     if ! command -v fdfind >/dev/null 2>&1; then
@@ -172,7 +228,7 @@ shopt -s dotglob
 #
 # alias create-aoc-py="create_py_aoc"
 
-# Not used this days, but convenient
+# A version of this is in my tmux conf, but old code saved here for reference
 # tmux_reload_bashrc() {
 #     if command -v tmux &> /dev/null; then
 #         for i in $(tmux list-windows -F "#{window_id}"); do
