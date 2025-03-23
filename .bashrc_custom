@@ -25,36 +25,36 @@ shopt -s dotglob
 
 # A take on ThePrimeagen's tmux-sessionizer
 # This assumes a Debian install so the command for fd is fdfind
-fdfzfwez() {
-    local missing_deps=0
-    if ! command -v fdfind >/dev/null 2>&1; then
-        echo "Error: fdfind is not installed. Please install the fd-find package (sudo apt install fd-find)."
-        missing_deps=1
-    fi
-    if ! command -v wezterm >/dev/null 2>&1; then
-        echo "Error: wezterm is not installed or not in PATH."
-        missing_deps=1
-    fi
-    if ! command -v fzf >/dev/null 2>&1; then
-        echo "Error: fzf is not installed. Please install fzf (sudo apt install fzf)."
-        missing_deps=1
-    fi
-    if [ "$missing_deps" -eq 1 ]; then
-        return 1
-    fi
-
-    local dir
-    dir=$(fdfind --type d --base-directory "$HOME" --hidden --exclude '.git' --exclude '.cfg' | fzf)
-    if [ -n "$dir" ]; then
-        if wezterm cli list >/dev/null 2>&1; then
-            wezterm cli spawn --cwd "$HOME/$dir"
-        else
-            wezterm start --cwd "$HOME/$dir"
-        fi
-    fi
-}
-
-alias fdw="fdfzfwez"
+# fdfzfwez() {
+#     local missing_deps=0
+#     if ! command -v fdfind >/dev/null 2>&1; then
+#         echo "Error: fdfind is not installed. Please install the fd-find package (sudo apt install fd-find)."
+#         missing_deps=1
+#     fi
+#     if ! command -v wezterm >/dev/null 2>&1; then
+#         echo "Error: wezterm is not installed or not in PATH."
+#         missing_deps=1
+#     fi
+#     if ! command -v fzf >/dev/null 2>&1; then
+#         echo "Error: fzf is not installed. Please install fzf (sudo apt install fzf)."
+#         missing_deps=1
+#     fi
+#     if [ "$missing_deps" -eq 1 ]; then
+#         return 1
+#     fi
+#
+#     local dir
+#     dir=$(fdfind --type d --base-directory "$HOME" --hidden --exclude '.git' --exclude '.cfg' | fzf)
+#     if [ -n "$dir" ]; then
+#         if wezterm cli list >/dev/null 2>&1; then
+#             wezterm cli spawn --cwd "$HOME/$dir"
+#         else
+#             wezterm start --cwd "$HOME/$dir"
+#         fi
+#     fi
+# }
+#
+# alias fdw="fdfzfwez"
 
 # for_creating_all() {
 #     cp "$HOME/default_programming_files/.gitignore" .
