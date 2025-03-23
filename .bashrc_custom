@@ -16,6 +16,8 @@ else
     alias ls='ls -lhA'
 fi
 
+alias mkdir='mkdir -p'
+
 shopt -s dotglob
 
 # Modified version of ThePrimeagen's sessionizer/windowizer code
