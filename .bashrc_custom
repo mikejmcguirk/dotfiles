@@ -21,6 +21,7 @@ alias mkdir='mkdir -p'
 shopt -s dotglob
 
 # Modified version of ThePrimeagen's sessionizer/windowizer code
+# TODO: Does not work if run in a non-home directory
 tmux_windowizer() {
     local missing_deps=0
     if ! command -v tmux >/dev/null 2>&1; then
