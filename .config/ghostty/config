@@ -119,6 +119,7 @@ keybind = ctrl+shift+z=ignore
 keybind = ctrl+shift+c=copy_to_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
 keybind = alt+enter=toggle_fullscreen
+
 # Unused
 #
 # keybind = ctrl+tab=next_tab
