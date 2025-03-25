@@ -52,20 +52,22 @@ tmux_windowizer() {
     local dir
     if [ $# -eq 1 ]; then
         dir="$1"
+        if [[ "$dir" != /* ]]; then
+            dir="$HOME/$dir" # argument was a relative path
+        fi
     else
         dir=$(fdfind --type d --base-directory "$HOME" --hidden --exclude '.git' --exclude '.cfg' | fzf)
+        if [ -n "$dir" ]; then
+            dir="$HOME/$dir"
+        fi
     fi
 
     if [ -z "$dir" ]; then
         return 0
     fi
 
-    # Some hacking to turn the directory format into something that displays properly in
-    # the terminal prompt of the new window
-    # Want to avoid something like "~/./.config/tmux"
-    dir="${dir/#\~/$HOME}"
-    # NOTE: Do not put a quote around $dir or it breaks
-    dir=$(realpath $dir 2>/dev/null)
+    dir=$(realpath "$dir" 2>/dev/null)
+
     if [ ! -d "$dir" ]; then
         echo "Error: '$dir' is not a valid directory."
         return 1
@@ -73,7 +75,6 @@ tmux_windowizer() {
 
     local window_name
     window_name=$(basename "$dir" | tr . _)
-
     tmux new-window -n "$window_name" -c "$dir"
 }
 
