@@ -50,6 +50,8 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
+bindsym $mod+Return exec $HOME/.local/bin/ghostty
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -164,10 +166,3 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
-
-########
-# Unused
-########
-
-# start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
