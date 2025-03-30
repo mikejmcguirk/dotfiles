@@ -1,54 +1,114 @@
-/* Global settings */
+/* RASI Theme */
+
 * {
-font: "sans-serif 12"; /* Sans-serif font, size 12 (adjust size as needed) */
-        background-color: #000000; /* Main background: black */
-        text-color: #efeffd; /* Text color: soft off-white */
-        border-color: #d3d3d3; /* Separators: light gray */
+    background:                      #000000;
+    bordercolor:                     #000000;
+    separatorcolor:                  #9e9e9e;
+    normal-background:               #000000;
+    normal-foreground:               #d9ddde;
+    alternate-normal-foreground:     #2d2c2a;
+    selected-normal-background:      #893e98;
+    selected-normal-foreground:      #eee8d5;
+    active-background:               #000000;
+    active-foreground:               #ffffff;
+    alternate-active-background:     #424242;
+    selected-active-background:      #1899aa;
+    selected-active-foreground:      #ffffff;
+    urgent-background:               #000000;
+    urgent-foreground:               #ffffff;
+    alternate-urgent-background:     #4a4a4a;
+    selected-urgent-background:      #d08025;
+    selected-urgent-foreground:      #ffffff;
+    alternate-normal-foreground:     @normal-foreground;
+    alternate-urgent-foreground:     @urgent-foreground;
+    alternate-active-foreground:     @active-foreground;
+    foreground:                      @normal-foreground;
 }
 
-/* Main window */
-window {
-    background-color: #000000; /* Ensure window background is black */
-border: 1px; /* Optional: thin border */
-        border-color: #d3d3d3; /* Light gray border */
+* {
+    spacing:    2;
+    border-color: @foreground;
+    background-color: transparent;
 }
-
-/* Input bar (prompt and entry) */
-inputbar {
-    background-color: #000000; /* Black background */
-padding: 8px;
-children: [ prompt, entry ];
+#window {
+    border:     1;
+    padding:    5;
+    background-color: @background;
 }
-
-prompt {
-    text-color: #efeffd; /* Prompt text: off-white */
+#mainbox {
+    border:  0;
+    padding: 0;
 }
-
-entry {
-    background-color: #000000; /* Entry background: black */
-    text-color: #efeffd; /* Entry text: off-white */
+#message {
+    border:  1px dash 0px 0px ;
+    padding: 2px 0px 0px ;
+    border-color: @separatorcolor;
 }
-
-/* List view (menu items) */
-listview {
-    background-color: #000000; /* Black background for the list */
-    border-color: #d3d3d3; /* Light gray separators between items */
+#textbox {
+    text-color: @foreground;
 }
-
-/* Elements (menu items) */
-element {
-    background-color: #000000; /* Default item background: black */
-    text-color: #efeffd; /* Default item text: off-white */
-padding: 6px;
+#listview {
+    border-color: @separatorcolor;
 }
-
-/* Selected element (highlight) */
-element selected {
-    background-color: #6a4c7f; /* Selection highlight: muted purple */
-    text-color: #efeffd; /* Selected text remains off-white */
+#listview {
+    fixed-height: 0;
+    border:       2px dash 0px 0px ;
+    padding:      2px 0px 0px ;
 }
-
-/* Optional: Hover effect (if supported) */
-element alternate {
-    background-color: #1a1a1a; /* Slight gray for hover (optional) */
+#element {
+    border: 0;
+}
+#element normal.normal {
+    text-color: @normal-foreground;
+    background-color: @normal-background;
+}
+#element normal.urgent {
+    text-color: @urgent-foreground;
+    background-color: @urgent-background;
+}
+#element normal.active {
+    text-color: @active-foreground;
+    background-color: @active-background;
+}
+#element selected.normal {
+    text-color: @selected-normal-foreground;
+    background-color: @selected-normal-background;
+}
+#element selected.urgent {
+    text-color: @selected-urgent-foreground;
+    background-color: @selected-urgent-background;
+}
+#element selected.active {
+    text-color: @selected-active-foreground;
+    background-color: @selected-active-background;
+}
+#element alternate.normal {
+    text-color: @alternate-normal-foreground;
+    background-color: @alternate-normal-background;
+}
+#element alternate.urgent {
+    text-color: @alternate-urgent-foreground;
+    background-color: @alternate-urgent-background;
+}
+#element alternate.active {
+    text-color: @alternate-active-foreground;
+    background-color: @alternate-active-background;
+}
+#scrollbar {
+    border:  0;
+    width: 4px;
+    padding: 0;
+    handle-color: @normal-foreground;
+}
+#sidebar {
+    border:       2px dash 0px 0px ;
+    border-color: @separatorcolor;
+}
+#button selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+#inputbar, case-indicator, entry, prompt, button {
+    spacing: 0;
+    text-color:      @normal-foreground;
 }
