@@ -57,7 +57,7 @@ bshlcolor=d598ffff       # Purple (#d598ff) for backspace highlight
 veriftext="Verifying..."
 verifcolor=767f4cff      # Green (#767f4c) for verification text
 wrongtext="Failure!"
-wrongcolor=FFD298ff      # Orange (#FFD298) for wrong text
+wrongcolor=ff98b3ff      # Orange (#ff89b3) for wrong text
 modifcolor=EEEEECff      # Light gray (#EEEEEC) for modifier keys
 bgcolor=000000ff         # Solid black background (#000000)
 
