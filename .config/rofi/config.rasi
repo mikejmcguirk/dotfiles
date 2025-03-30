@@ -1,1 +1,54 @@
+/* Global settings */
+* {
+font: "sans-serif 12"; /* Sans-serif font, size 12 (adjust size as needed) */
+        background-color: #000000; /* Main background: black */
+        text-color: #efeffd; /* Text color: soft off-white */
+        border-color: #d3d3d3; /* Separators: light gray */
+}
 
+/* Main window */
+window {
+    background-color: #000000; /* Ensure window background is black */
+border: 1px; /* Optional: thin border */
+        border-color: #d3d3d3; /* Light gray border */
+}
+
+/* Input bar (prompt and entry) */
+inputbar {
+    background-color: #000000; /* Black background */
+padding: 8px;
+children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: #efeffd; /* Prompt text: off-white */
+}
+
+entry {
+    background-color: #000000; /* Entry background: black */
+    text-color: #efeffd; /* Entry text: off-white */
+}
+
+/* List view (menu items) */
+listview {
+    background-color: #000000; /* Black background for the list */
+    border-color: #d3d3d3; /* Light gray separators between items */
+}
+
+/* Elements (menu items) */
+element {
+    background-color: #000000; /* Default item background: black */
+    text-color: #efeffd; /* Default item text: off-white */
+padding: 6px;
+}
+
+/* Selected element (highlight) */
+element selected {
+    background-color: #6a4c7f; /* Selection highlight: muted purple */
+    text-color: #efeffd; /* Selected text remains off-white */
+}
+
+/* Optional: Hover effect (if supported) */
+element alternate {
+    background-color: #1a1a1a; /* Slight gray for hover (optional) */
+}
