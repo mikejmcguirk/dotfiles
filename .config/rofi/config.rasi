@@ -2,23 +2,24 @@
 
 * {
     font: "sans-serif 12";
-    background:                      #000000;
-    bordercolor:                     #000000;
+    margin: 1;
+    background:                      #251d2b;
+    bordercolor:                     #d598ff;
     separatorcolor:                  #efeffd;
-    normal-background:               #000000;
+    normal-background:               #251d2b;
     normal-foreground:               #efeffd;
-    alternate-normal-background:     #262626;
+    alternate-normal-background:     #251d2b;
     alternate-normal-foreground:     #efeffd;
     selected-normal-background:      #6a4c7f;
     selected-normal-foreground:      #efeffd;
-    active-background:               #000000;
+    active-background:               #251d2b;
     active-foreground:               #efeffd;
-    alternate-active-background:     #424242;
+    alternate-active-background:     #251d2b;
     selected-active-background:      #1899aa;
     selected-active-foreground:      #efeffd;
-    urgent-background:               #000000;
+    urgent-background:               #251d2b;
     urgent-foreground:               #efeffd;
-    alternate-urgent-background:     #4a4a4a;
+    alternate-urgent-background:     #262626;
     selected-urgent-background:      #7f694c;
     selected-urgent-foreground:      #efeffd;
     alternate-normal-foreground:     @normal-foreground;
@@ -36,6 +37,7 @@
     border:     1;
     padding:    5;
     background-color: @background;
+    width: 45%;
 }
 #mainbox {
     border:  0;
@@ -113,4 +115,9 @@
 #inputbar, case-indicator, entry, prompt, button {
     spacing: 0;
     text-color:      @normal-foreground;
+}
+
+configuration {
+    kb-cancel: "Control+c";
+    kb-accept-entry: "Return";
 }
