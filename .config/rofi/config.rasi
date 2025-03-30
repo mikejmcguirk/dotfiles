@@ -120,4 +120,6 @@
 configuration {
     kb-cancel: "Control+c";
     kb-accept-entry: "Return";
+    kb-row-up: "Super+k";
+    kb-row-down: "Super+j";
 }
