@@ -12,6 +12,7 @@ bindsym $mod+shift+x exec betterlockscreen -l dim
 
 # bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+d exec rofi -show run
+bindsym $mod+shift+p exec rofi-power
 
 bindsym $mod+Return exec $HOME/.local/bin/ghostty
 
@@ -50,6 +51,8 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+
+default_orientation vertical
 
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -139,12 +142,3 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3status
 }
-
-##############
-
-exec --no-startup-id i3-msg "workspace 1; exec ghostty"
-exec --no-startup-id i3-msg "workspace 2; exec brave-browser-stable"
-exec --no-startup-id i3-msg "workspace 3; exec ghostty"
-exec --no-startup-id i3-msg "workspace 3; exec gnome-disks"
-# exec --no-startup-id i3-msg "workspace 3; exec discord"
-# exec --no-startup-id i3-msg "workspace 10; exec spotify"
