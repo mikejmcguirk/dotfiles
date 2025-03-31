@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+polybar-msg cmd quit
+
+# Or killall -q polybar
+# The -q option suppresses errors
+
+if type "xrandr"; then
+    for m in $(xrandr --query | grep " connect" | cut -d" " -f1); do
+        MONITOR=$m polybar --reload main &
+    done
+else
+    polybar --reload main &
+fi
