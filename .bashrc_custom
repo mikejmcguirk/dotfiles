@@ -79,6 +79,18 @@ tmux_windowizer() {
 
 alias fdw="tmux_windowizer"
 
+tmux_reload_bashrc() {
+    if command -v tmux &> /dev/null; then
+        for i in $(tmux list-windows -F "#{window_id}"); do
+            tmux send-keys -t "$i" "source ~/.bashrc" Enter
+        done
+    else
+        echo "tmux is not installed. Please install tmux to use this feature."
+    fi
+}
+
+alias tmux-reload-bashrc="tmux_reload_bashrc"
+
 ########
 # Unused
 ########
@@ -230,16 +242,3 @@ alias fdw="tmux_windowizer"
 # }
 #
 # alias create-aoc-py="create_py_aoc"
-
-# A version of this is in my tmux conf, but old code saved here for reference
-# tmux_reload_bashrc() {
-#     if command -v tmux &> /dev/null; then
-#         for i in $(tmux list-windows -F "#{window_id}"); do
-#             tmux send-keys -t "$i" "source ~/.bashrc" Enter
-#         done
-#     else
-#         echo "tmux is not installed. Please install tmux to use this feature."
-#     fi
-# }
-#
-# alias tmux-reload-bashrc="tmux_reload_bashrc"
