@@ -78,6 +78,12 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+# class                 border  backgr. text    indicator child_border
+client.focused          #6a4c7f #6a4c7f #efeffd #4c7f7d   #6a4c7f
+client.focused_inactive #333333 #5f676a #efeffd #4c7f7d   #333333
+client.unfocused        #222222 #222222 #888888 #292d2e   #222222
+client.urgent           #262626 #7f4c59 #efeffd #7f964c   #262626
+
 ###############
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
