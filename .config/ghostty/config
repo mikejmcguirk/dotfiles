@@ -1,7 +1,9 @@
 gtk-titlebar = false
 # gtk-titlebar = true
-# window-decoration = auto
-window-decoration = none
+# window-decoration = none
+# On my Mint setupk, this gives me the standard i3 border without cornered edges
+# and it doesn't require a separate GTK config file
+window-decoration = server
 
 mouse-hide-while-typing = true
 
