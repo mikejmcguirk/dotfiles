@@ -5,3 +5,7 @@ fi
 if [[ "$(tty)" == "/dev/tty1" && -z "$DISPLAY" ]]; then
     startx
 fi
+
+# Created by `pipx` on 2025-04-12 20:25:18
+export PATH="$PATH:/home/mjm/.local/bin"
+. "$HOME/.cargo/env"
