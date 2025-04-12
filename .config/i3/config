@@ -21,7 +21,7 @@ set $mod Mod4
 bindsym $mod+d exec rofi -show run
 bindsym $mod+shift+p exec $HOME/.local/bin/rofi-scripts/rofi-power
 
-bindsym $mod+i exec $HOME/.local/bin/maim-script select
+bindsym $mod+i exec $HOME/.local/bin/maim-script.sh select
 
 bindsym $mod+Return exec $HOME/.local/bin/ghostty
 
