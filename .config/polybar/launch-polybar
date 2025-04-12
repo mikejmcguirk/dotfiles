@@ -5,10 +5,8 @@ polybar-msg cmd quit
 # Or killall -q polybar
 # The -q option suppresses errors
 
-if type "xrandr"; then
-    for m in $(xrandr --query | grep " connect" | cut -d" " -f1); do
-        MONITOR=$m polybar --reload main &
-    done
-else
-    polybar --reload main &
+polybar main &
+
+if xrandr -q | grep -q 'DVI-D-0 connected'; then
+    polybar --reload secondary &
 fi
