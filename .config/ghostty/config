@@ -1,13 +1,15 @@
 gtk-titlebar = false
-window-decoration = false
+window-decoration = auto
+
+mouse-hide-while-typing = true
 
 font-family = Cousine Nerd Font Mono
 font-size = 11.0
 
 app-notifications = false
 
-window-padding-x = 0
-window-padding-y = 0
+window-padding-x = 1
+window-padding-y = 1
 background-opacity = 0.86
 
 clipboard-read = allow

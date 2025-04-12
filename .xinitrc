@@ -1,15 +1,14 @@
 #!/bin/bash
 
-# Probably use this, since dpms can put the monitor into like, the mode where it's blank
-# But not in the deep de-powered mode that takes forever. Or maybe that's fine iunno
-# Point is I can't test this on a vm
-# xset +dpms
-# xset dpms 0 0 120
+if command -v xset >/dev/null 2>&1 && xset q | grep -q "DPMS is Enabled"; then
+    xset +dpms
+    xset dpms 1800 0 0
+else
+    echo "DPMS not supported or disabled" >> ~/.xsession-errors
+fi
 
-# xset s blank
-# xset s 2
-# xset -dpms
+killall -q xautolock
+xautolock -time 15 -locker "betterlockscreen -l dim" -detectsleep &
 
-xautolock -time 15 -locker "betterlockscreen -l dim" &
-
+# Use the default xinitrc to make sure that the session is built properly (including dbus)
 . /etc/X11/xinit/xinitrc
