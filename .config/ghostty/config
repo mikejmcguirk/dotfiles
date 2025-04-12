@@ -1,6 +1,7 @@
-# gtk-titlebar = false
-gtk-titlebar = true
-window-decoration = auto
+gtk-titlebar = false
+# gtk-titlebar = true
+# window-decoration = auto
+window-decoration = none
 
 mouse-hide-while-typing = true
 

@@ -4,15 +4,15 @@ exec --no-startup-id dex --autostart --environment i3
 
 font pango:DejaVu Sans 8
 
-# exec_always --no-startup-id feh --bg-scale "$HOME/.config/wallpaper/alena-aenami-rooflinesgirl-1k-2-someday.jpg"
-# exec_always --no-startup-id picom --experimental-backends
+exec_always --no-startup-id feh --bg-scale "$HOME/.config/wallpaper/alena-aenami-rooflinesgirl-1k-2-someday.jpg"
+exec_always --no-startup-id picom --experimental-backends
 
 # bindsym $mod+shift+x exec betterlockscreen -l dim
 
-# exec --no-startup-id bash -c "if xrandr -q | grep -q 'DVI-D-0 connected'; then xrandr --output HDMI-0 --primary; fi"
+exec_always --no-startup-id bash -c "if xrandr -q | grep -q 'DVI-D-0 connected'; then xrandr --output HDMI-0 --primary; fi"
 # Includes cmd to kill previous instance(s)
 # Sleep is included because otherwise picom doesn't load properly
-# exec_always --no-startup-id sleep 1 && $HOME/.config/polybar/launch-polybar
+exec_always --no-startup-id sleep 1 && $HOME/.config/polybar/launch-polybar
 
 # exec --no-startup-id "$HOME/.config/start-redshift.sh"
 
