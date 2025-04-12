@@ -1,19 +1,23 @@
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-# exec --no-startup-id xautolock -time 1 -locker 'betterlockscreen -l dim' -detectsleep
+# This is fine for now because this setup is for desktop only
+# But if we want to move it to a laptop, we would need to use xss lock because
+# it can detect lid closing events
+exec_always --no-startup-id "$HOME/.config/i3-lock-script.sh"
 
 font pango:DejaVu Sans 8
 
 exec_always --no-startup-id feh --bg-scale "$HOME/.config/wallpaper/alena-aenami-rooflinesgirl-1k-2-someday.jpg"
 exec_always --no-startup-id picom --experimental-backends
 
-# bindsym $mod+shift+x exec betterlockscreen -l dim
+bindsym $mod+shift+x exec dm-tool lock
 
 exec_always --no-startup-id bash -c "if xrandr -q | grep -q 'DVI-D-0 connected'; then xrandr --output HDMI-0 --primary; fi"
 # Includes cmd to kill previous instance(s)
 # Sleep is included because otherwise picom doesn't load properly
 exec_always --no-startup-id sleep 1 && $HOME/.config/polybar/launch-polybar
 
+# TODO: Test that this closes with i3
 # exec --no-startup-id "$HOME/.config/start-redshift.sh"
 
 set $mod Mod4
