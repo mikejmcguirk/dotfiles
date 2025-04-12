@@ -13,6 +13,8 @@ exec --no-startup-id bash -c "if xrandr -q | grep -q 'DVI-D-0 connected'; then x
 # Sleep is included because otherwise picom doesn't load properly
 exec_always --no-startup-id sleep 1 && $HOME/.config/polybar/launch-polybar
 
+exec --no-startup-id redshift-gtk
+
 set $mod Mod4
 
 # bindsym $mod+d exec --no-startup-id dmenu_run
