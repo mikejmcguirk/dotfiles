@@ -15,7 +15,7 @@ bindsym $mod+shift+x exec dm-tool lock
 exec_always --no-startup-id bash -c "if xrandr -q | grep -q 'DVI-D-0 connected'; then xrandr --output HDMI-0 --primary; fi"
 # Includes cmd to kill previous instance(s)
 # Sleep is included because otherwise picom doesn't load properly
-exec_always --no-startup-id sleep 1 && $HOME/.config/polybar/launch-polybar
+exec_always --no-startup-id sleep 1 && $HOME/.config/polybar/launch-polybar.sh
 
 exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
@@ -27,7 +27,7 @@ set $mod Mod4
 
 bindsym $mod+d exec --no-startup-id dmenu_run
 # bindsym $mod+d exec rofi -show run
-# bindsym $mod+shift+p exec $HOME/.local/bin/rofi-scripts/rofi-power
+# bindsym $mod+shift+p exec $HOME/.local/bin/rofi-scripts/rofi-power.sh
 
 # bindsym $mod+i exec $HOME/.local/bin/maim-script.sh select
 
