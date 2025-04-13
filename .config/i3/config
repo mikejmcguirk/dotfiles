@@ -41,9 +41,9 @@ workspace_layout tabbed
 
 set $mod Mod4
 
-bindsym $mod+d exec --no-startup-id dmenu_run
-# bindsym $mod+d exec rofi -show run
-# bindsym $mod+shift+p exec $HOME/.local/bin/rofi-scripts/rofi-power.sh
+# bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec rofi -show run
+bindsym $mod+shift+p exec $HOME/.local/bin/rofi-scripts/rofi-power.sh
 
 bindsym $mod+shift+x exec dm-tool lock
 
