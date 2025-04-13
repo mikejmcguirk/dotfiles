@@ -17,7 +17,6 @@ exec_always --no-startup-id "$HOME/.config/i3-lock-script.sh"
 exec_always --no-startup-id feh --bg-scale "$HOME/.config/wallpaper/alena-aenami-rooflinesgirl-1k-2-someday.jpg"
 exec_always --no-startup-id picom --experimental-backends
 
-exec_always --no-startup-id bash -c "if xrandr -q | grep -q 'DVI-D-0 connected'; then xrandr --output HDMI-0 --primary; fi"
 # Includes cmd to kill previous instance(s)
 # Sleep is included because otherwise picom doesn't load properly
 exec_always --no-startup-id sleep 1 && $HOME/.config/polybar/launch-polybar.sh
@@ -45,7 +44,7 @@ set $mod Mod4
 bindsym $mod+d exec rofi -show run
 bindsym $mod+shift+p exec $HOME/.local/bin/rofi-scripts/rofi-power.sh
 
-bindsym $mod+shift+x exec dm-tool lock
+bindsym $mod+shift+x exec betterlockscreen --lock dim --display 1
 
 bindsym $mod+Return exec $HOME/.local/bin/ghostty
 
