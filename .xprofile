@@ -1,0 +1,4 @@
+if xset q 2>/dev/null | grep -q "DPMS"; then
+    xset +dpms
+    xset dpms 1800 7200 0
+fi
