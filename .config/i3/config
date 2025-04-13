@@ -1,3 +1,8 @@
+# TODO: certain things like the mixer or photos need to open in tabs rather than tiles
+# TODO: create a rofi for screenshots
+# TODO: General config note, be careful about anything that specifies monitors
+# polybar, here for primary, i'm sure there's others. Can grep in nvim
+
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 # This is fine for now because this setup is for desktop only

@@ -127,7 +127,7 @@ keybind = ctrl+shift+z=ignore
 
 keybind = ctrl+shift+c=copy_to_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
-keybind = alt+enter=toggle_fullscreen
+# keybind = alt+enter=toggle_fullscreen
 
 # keybind = ctrl+alt>i=reload_config
 
