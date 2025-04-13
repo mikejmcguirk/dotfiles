@@ -3,5 +3,5 @@
 killall -q nm-applet
 nm-applet
 
-killall -q volumeicon
-volumeicon
+# killall -q volumeicon
+# volumeicon

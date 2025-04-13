@@ -1,21 +1,21 @@
-# TODO: certain things like the mixer or photos need to open in tabs rather than tiles
 # TODO: create a rofi for screenshots
 # TODO: General config note, be careful about anything that specifies monitors
 # polybar, here for primary, i'm sure there's others. Can grep in nvim
 
+#########
+# Startup
+#########
+
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
+
 # This is fine for now because this setup is for desktop only
 # But if we want to move it to a laptop, we would need to use xss lock because
 # it can detect lid closing events
 exec_always --no-startup-id "$HOME/.config/i3-lock-script.sh"
 
-font pango:DejaVu Sans 8
-
 exec_always --no-startup-id feh --bg-scale "$HOME/.config/wallpaper/alena-aenami-rooflinesgirl-1k-2-someday.jpg"
 exec_always --no-startup-id picom --experimental-backends
-
-bindsym $mod+shift+x exec dm-tool lock
 
 exec_always --no-startup-id bash -c "if xrandr -q | grep -q 'DVI-D-0 connected'; then xrandr --output HDMI-0 --primary; fi"
 # Includes cmd to kill previous instance(s)
@@ -28,15 +28,28 @@ exec_always --no-startup-id "$HOME/.config/start-systray.sh"
 # Does goofy stuff if you close and re-open
 exec --no-startup-id redshift-gtk
 
+##########
+# Settings
+##########
+
+default_orientation vertical
+workspace_layout tabbed
+
+#############
+# Keybindings
+#############
+
 set $mod Mod4
 
 bindsym $mod+d exec --no-startup-id dmenu_run
 # bindsym $mod+d exec rofi -show run
 # bindsym $mod+shift+p exec $HOME/.local/bin/rofi-scripts/rofi-power.sh
 
-# bindsym $mod+i exec $HOME/.local/bin/maim-script.sh select
+bindsym $mod+shift+x exec dm-tool lock
 
 bindsym $mod+Return exec $HOME/.local/bin/ghostty
+
+# bindsym $mod+i exec $HOME/.local/bin/maim-script.sh select
 
 bindsym $mod+Shift+q kill
 
@@ -74,10 +87,16 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
-workspace 1 output HDMI-0
-workspace 2 output DVI-D-0
-
-default_orientation vertical
+workspace 1 output primary
+workspace 2 output primary
+workspace 3 output primary
+workspace 4 output primary
+workspace 5 output primary
+workspace 6 output DVI-D-0
+workspace 7 output DVI-D-0
+workspace 8 output DVI-D-0
+workspace 9 output DVI-D-0
+workspace 0 output DVI-D-0
 
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -90,89 +109,60 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# workspace 1 output
-
+# Don't disable all floating windows, or else stuff like download windows in Brave will
+# open improperly, but disable activating them
 # for_window [class="^.*"] floating disable
-for_window [class="^.*"] border pixel 1
 # bindsym $mod+Shift+space floating toggle
 # bindsym $mod+space focus mode_toggle
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# move tiling windows via drag & drop by left-clicking into the title bar,
+# or left-clicking anywhere into the window while holding the floating modifier.
+# tiling_drag modifier titlebar
+
+bindsym $mod+s split h
+bindsym $mod+v split v
+# bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+a focus parent
+bindsym $mod+b focus child
+
+bindsym $mod+F10 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod+F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+# Cap volume up at 150%
+bindsym $mod+F12 exec --no-startup-id $HOME/.config/volume_up.sh
+bindsym $mod+Shift+o exec --no-startup-id cinnamon-settings sound
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' '$HOME/.config/i3-exit.sh'"
 
-bindsym $mod+F10 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym $mod+F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-# Cap volume up at 150%
-bindsym $mod+F12 exec --no-startup-id $HOME/.config/volume_up.sh
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+############
+# Aesthetics
+############
+
+font pango:DejaVu Sans 8
+
+for_window [class="^.*"] border pixel 1
 # class                 border  backgr. text    indicator child_border
 client.focused          #6a4c7f #6a4c7f #efeffd #4c7f7d   #6a4c7f
 client.focused_inactive #333333 #5f676a #efeffd #4c7f7d   #333333
 client.unfocused        #222222 #222222 #888888 #292d2e   #222222
 client.urgent           #262626 #7f4c59 #efeffd #7f964c   #262626
-
-###############
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
-
-# split in horizontal orientation
-bindsym $mod+s split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# change container layout (stacked, tabbed, toggle split)
-# bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-    # These bindings trigger as soon as you enter the resize mode
-
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
-    bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym semicolon resize grow width 10 px or 10 ppt
-
-    # same bindings, but for the arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
-
-    # back to normal: Enter or Escape or $mod+r
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
