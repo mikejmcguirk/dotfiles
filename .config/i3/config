@@ -17,8 +17,9 @@ exec_always --no-startup-id bash -c "if xrandr -q | grep -q 'DVI-D-0 connected';
 # Sleep is included because otherwise picom doesn't load properly
 exec_always --no-startup-id sleep 1 && $HOME/.config/polybar/launch-polybar
 
-# TODO: Test that this closes with i3
-# exec --no-startup-id "$HOME/.config/start-redshift.sh"
+exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+exec_always --no-startup-id "$HOME/.config/start-redshift.sh"
 
 set $mod Mod4
 
