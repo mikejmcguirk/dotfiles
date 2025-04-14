@@ -117,9 +117,12 @@
     text-color:      @normal-foreground;
 }
 
+/* rofi -dump- config to see current/default bindings */
 configuration {
     kb-cancel: "Control+c";
     kb-accept-entry: "Return";
-    kb-row-up: "Super+k";
-    kb-row-down: "Super+j";
+    /* Remove default ctrl+k binding */
+    kb-remove-to-eol: "";
+    kb-row-up: "Control+k";
+    kb-row-down: "Control+j";
 }
