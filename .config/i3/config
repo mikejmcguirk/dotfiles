@@ -43,12 +43,11 @@ set $mod Mod4
 # bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+d exec rofi -show run
 bindsym $mod+shift+p exec $HOME/.local/bin/rofi-scripts/rofi-power.sh
+bindsym $mod+i exec $HOME/.local/bin/rofi-scripts/rofi-screenshot.sh
 
 bindsym $mod+shift+x exec betterlockscreen --lock dim --display 1
 
 bindsym $mod+Return exec $HOME/.local/bin/ghostty
-
-# bindsym $mod+i exec $HOME/.local/bin/maim-script.sh select
 
 bindsym $mod+Shift+q kill
 

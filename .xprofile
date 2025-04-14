@@ -1,4 +1,13 @@
 if xset q 2>/dev/null | grep -q "DPMS"; then
     xset +dpms
     xset dpms 1800 7200 0
+else
+    xset -dpms
+fi
+
+if xset q 2>/dev/null | grep -q "Screen Saver"; then
+    xset s 1800 1800
+    xset s blank
+else
+    xset s off
 fi
