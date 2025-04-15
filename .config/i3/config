@@ -1,7 +1,3 @@
-# TODO: create a rofi for screenshots
-# TODO: General config note, be careful about anything that specifies monitors
-# polybar, here for primary, i'm sure there's others. Can grep in nvim
-
 #########
 # Startup
 #########
@@ -94,7 +90,7 @@ workspace 6 output DVI-D-0
 workspace 7 output DVI-D-0
 workspace 8 output DVI-D-0
 workspace 9 output DVI-D-0
-workspace 0 output DVI-D-0
+workspace 10 output DVI-D-0
 
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -141,13 +137,13 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 mode "resize" {
     bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    bindsym j resize shrink height 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
