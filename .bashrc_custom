@@ -20,6 +20,8 @@ alias mkdir='mkdir -p'
 
 shopt -s dotglob
 
+alias mint-install="bash $HOME/mint_install/mint_install.sh"
+
 # Modified version of ThePrimeagen's sessionizer/windowizer code
 tmux_windowizer() {
     local missing_deps=0
@@ -80,7 +82,7 @@ tmux_windowizer() {
 alias fdw="tmux_windowizer"
 
 tmux_reload_bashrc() {
-    if command -v tmux &> /dev/null; then
+    if command -v tmux &>/dev/null; then
         for i in $(tmux list-windows -F "#{window_id}"); do
             tmux send-keys -t "$i" "source ~/.bashrc" Enter
         done
