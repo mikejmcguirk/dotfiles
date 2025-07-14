@@ -1,15 +1,20 @@
 gtk-titlebar = false
 # On my Mint setup, this gives me the standard i3 border without cornered edges
-# and it doesn't require a separate GTK config file
+# This also doesn't require a separate GTK config file
+# On Cinnamon, this provides a standard title bar without bells and whistles
 window-decoration = server
+app-notifications = false
+# Deals with a bug where, when exiting the last open terminal, the ghostty window closes but
+# the process still runs in the background because the ghostty window was not explicitly closed
+# Since we aren't trying to use GTK window decorations anyway, this should be fine. The Cinnamon
+# title bar shows dark with the correct close icon color
+gtk-adwaita = false
 
 mouse-hide-while-typing = true
 
 font-family = Cousine Nerd Font Mono
 font-size = 11.0
 font-synthetic-style = false
-
-app-notifications = false
 
 window-padding-x = 0
 window-padding-y = 1
