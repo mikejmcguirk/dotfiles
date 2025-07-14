@@ -5,8 +5,8 @@ gtk-titlebar = false
 window-decoration = server
 app-notifications = false
 # Deals with a bug where, when exiting the last open terminal, the ghostty window closes but
-# the process still runs in the background because the ghostty window was not explicitly closed
-# Since we aren't trying to use GTK window decorations anyway, this should be fine. The Cinnamon
+# the process still runs in the background because the ghostty window was not explicitly closed.
+# Since we aren't using GTK window decorations anyway, this should be fine. The Cinnamon
 # title bar shows dark with the correct close icon color
 gtk-adwaita = false
 
@@ -33,8 +33,8 @@ mouse-hide-while-typing = true
 shell-integration = bash
 shell-integration-features = cursor,no-sudo,no-title
 
-foreground = #EEEEEC
-background = black
+foreground =#EEEEEC
+background =black
 palette = 0=black
 palette = 1=#FF98B3
 palette = 2=#d598ff
@@ -59,7 +59,7 @@ unfocused-split-opacity = 1
 unfocused-split-fill = black
 split-divider-color = #d598ff
 
-# Explicitly allow
+# Explicitly allow for tmux/Nvim
 keybind = unconsumed:ctrl+shift+h=ignore
 keybind = unconsumed:ctrl+shift+j=ignore
 keybind = unconsumed:ctrl+shift+k=ignore
