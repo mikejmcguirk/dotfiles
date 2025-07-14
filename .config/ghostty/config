@@ -1,5 +1,5 @@
 gtk-titlebar = false
-# On my Mint setupk, this gives me the standard i3 border without cornered edges
+# On my Mint setup, this gives me the standard i3 border without cornered edges
 # and it doesn't require a separate GTK config file
 window-decoration = server
 
@@ -24,8 +24,6 @@ cursor-style = bar
 cursor-invert-fg-bg = true
 cursor-click-to-move = false
 mouse-hide-while-typing = true
-# Should be default
-# cursor-style-;blink = true
 
 shell-integration = bash
 shell-integration-features = cursor,no-sudo,no-title
@@ -120,36 +118,7 @@ keybind = unconsumed:shift+insert=ignore
 keybind = unconsumed:shift+page_up=ignore
 keybind = unconsumed:shift+page_down=ignore
 
-# Remaps
-
-keybind = ctrl+shift+j=ignore
-keybind = ctrl+shift+h=ignore
-keybind = ctrl+shift+z=ignore
-
 keybind = ctrl+shift+c=copy_to_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
-keybind = alt+enter=toggle_fullscreen
-
-# keybind = ctrl+alt>i=reload_config
-
-# Unused
-#
-# keybind = ctrl+tab=next_tab
-# keybind = ctrl+shift+tab=previous_tab
-
-# keybind = ctrl+space>t=new_tab
-
-# keybind = ctrl+space>1=goto_tab:1
-# keybind = ctrl+space>2=goto_tab:2
-
-# keybind = ctrl+space>\=new_split:right
-# keybind = ctrl+space>-=new_split:down
-
-# keybind = ctrl+h=goto_split:left
-# keybind = ctrl+j=goto_split:down
-# keybind = ctrl+k=goto_split:up
-# keybind = ctrl+l=goto_split:right
-
-# keybind = ctrl+space>o=toggle_split_zoom
-# keybind = ctrl+space>r=reload_config
-# keybind = ctrl+space>x=close_tab
+# For non-i3 systems
+keybind = alt+shift+enter=toggle_fullscreen
