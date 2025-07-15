@@ -124,8 +124,22 @@ keybind = unconsumed:shift+insert=ignore
 keybind = unconsumed:shift+page_up=ignore
 keybind = unconsumed:shift+page_down=ignore
 
-# Force ghostty to send tmux the proper kitty code
+# My experience making Ghostty, Tmux, and sending Kitty key codes work together:
+# - By default, tmux can see C-S-h/j/k/l. If I explicitly make Tmux forward the Kitty key codes,
+# - it will do so
+# - By default, tmux can recognize and forward C-<bs> and M-<bs>. It does not properly recognize
+# - and forward C-S-<bs>
+# - Turning on extended keys does not help
+# - Setting xterm-ghostty:extkeys does allow C-S-<bs> to be recognized
+# - However, as I understand, because ghostty is now aware of Tmux, it will avoid sending certain
+# - key codes it knows that by default Tmux doesn't know what to do with
+# - Because my Tmux config is mapped to explicitly pass these keys through, they are also
+# - explicitly mapped here
 keybind = ctrl+backspace=csi:127;5u
+keybind = ctrl+shift+h=csi:104;6u
+keybind = ctrl+shift+j=csi:106;6u
+keybind = ctrl+shift+k=csi:107;6u
+keybind = ctrl+shift+l=csi:108;6u
 
 # Keymaps
 keybind = ctrl+shift+c=copy_to_clipboard
