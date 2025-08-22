@@ -19,6 +19,7 @@ else
 fi
 
 alias mkdir='mkdir -p'
+alias cp='cp -r'
 
 shopt -s dotglob
 
