@@ -4,11 +4,6 @@ gtk-titlebar = false
 # On Cinnamon, this provides a standard title bar without bells and whistles
 window-decoration = server
 app-notifications = false
-# Deals with a bug where, when exiting the last open terminal, the ghostty window closes but
-# the process still runs in the background because the ghostty window was not explicitly closed.
-# Since we aren't using GTK window decorations anyway, this should be fine. The Cinnamon
-# title bar shows dark with the correct close icon color
-gtk-adwaita = false
 
 mouse-hide-while-typing = true
 
@@ -26,12 +21,15 @@ clipboard-write = allow
 copy-on-select = false
 
 cursor-style = bar
-cursor-invert-fg-bg = true
+cursor-color=cell-foreground
+cursor-text=cell-background
 cursor-click-to-move = false
 mouse-hide-while-typing = true
 
 shell-integration = bash
 shell-integration-features = cursor,no-sudo,no-title
+
+bell-features = no-system,no-audio,no-attention,no-title,no-border
 
 foreground =#EEEEEC
 background =black
@@ -60,69 +58,74 @@ unfocused-split-fill = black
 split-divider-color = #d598ff
 
 # Disable Default maps
-keybind = unconsumed:super+ctrl+shift+plus=ignore
-keybind = unconsumed:super+ctrl+shift+up=ignore
-keybind = unconsumed:super+ctrl+shift+down=ignore
-keybind = unconsumed:super+ctrl+shift+right=ignore
-keybind = unconsumed:super+ctrl+shift+left=ignore
+keybind = unconsumed:super+ctrl+shift+arrow_down=ignore
+keybind = unconsumed:super+ctrl+shift+arrow_left=ignore
+keybind = unconsumed:super+ctrl+shift+arrow_right=ignore
+keybind = unconsumed:super+ctrl+shift+arrow_up=ignore
+keybind = unconsumed:super+ctrl+shift+j=ignore
 keybind = unconsumed:ctrl+alt+shift+j=ignore
-keybind = unconsumed:super+ctrl+left_bracket=ignore
-keybind = unconsumed:super+ctrl+right_bracket=ignore
-keybind = unconsumed:ctrl+alt+up=ignore
-keybind = unconsumed:ctrl+alt+down=ignore
-keybind = unconsumed:ctrl+alt+right=ignore
-keybind = unconsumed:ctrl+alt+left=ignore
-keybind = unconsumed:alt+shift+enter=ignore
+keybind = unconsumed:super+ctrl+bracket_left=ignore
+keybind = unconsumed:super+ctrl+bracket_right=ignore
+keybind = unconsumed:ctrl+alt+arrow_down=ignore
+keybind = unconsumed:ctrl+alt+arrow_left=ignore
+keybind = unconsumed:ctrl+alt+arrow_right=ignore
+keybind = unconsumed:ctrl+alt+arrow_up=ignore
+keybind = unconsumed:ctrl+shift+,=ignore
+keybind = unconsumed:ctrl+shift+enter=ignore
+keybind = unconsumed:ctrl+shift+tab=ignore
+keybind = unconsumed:ctrl+shift+page_down=ignore
+keybind = unconsumed:ctrl+shift+page_up=ignore
+keybind = unconsumed:ctrl+shift+arrow_left=ignore
+keybind = unconsumed:ctrl+shift+arrow_right=ignore
 keybind = unconsumed:ctrl+shift+a=ignore
 keybind = unconsumed:ctrl+shift+c=ignore
 keybind = unconsumed:ctrl+shift+e=ignore
-keybind = unconsumed:ctrl+shift+h=ignore
 keybind = unconsumed:ctrl+shift+i=ignore
 keybind = unconsumed:ctrl+shift+j=ignore
-keybind = unconsumed:ctrl+shift+k=ignore
-keybind = unconsumed:ctrl+shift+l=ignore
 keybind = unconsumed:ctrl+shift+n=ignore
 keybind = unconsumed:ctrl+shift+o=ignore
+keybind = unconsumed:ctrl+shift+p=ignore
 keybind = unconsumed:ctrl+shift+q=ignore
 keybind = unconsumed:ctrl+shift+t=ignore
 keybind = unconsumed:ctrl+shift+v=ignore
 keybind = unconsumed:ctrl+shift+w=ignore
-keybind = unconsumed:ctrl+shift+comma=ignore
-keybind = unconsumed:ctrl+shift+right=ignore
-keybind = unconsumed:ctrl+shift+left=ignore
-keybind = unconsumed:ctrl+shift+page_up=ignore
-keybind = unconsumed:ctrl+shift+page_down=ignore
-keybind = unconsumed:ctrl+shift+enter=ignore
-keybind = unconsumed:ctrl+shift+tab=ignore
-keybind = unconsumed:alt+one=ignore
-keybind = unconsumed:alt+three=ignore
-keybind = unconsumed:alt+two=ignore
-keybind = unconsumed:alt+four=ignore
-keybind = unconsumed:alt+five=ignore
-keybind = unconsumed:alt+six=ignore
-keybind = unconsumed:alt+seven=ignore
-keybind = unconsumed:alt+eight=ignore
-keybind = unconsumed:alt+nine=ignore
+keybind = unconsumed:alt+digit_1=ignore
+keybind = unconsumed:alt+digit_2=ignore
+keybind = unconsumed:alt+digit_3=ignore
+keybind = unconsumed:alt+digit_4=ignore
+keybind = unconsumed:alt+digit_5=ignore
+keybind = unconsumed:alt+digit_6=ignore
+keybind = unconsumed:alt+digit_7=ignore
+keybind = unconsumed:alt+digit_8=ignore
+keybind = unconsumed:alt+1=ignore
+keybind = unconsumed:alt+2=ignore
+keybind = unconsumed:alt+3=ignore
+keybind = unconsumed:alt+4=ignore
+keybind = unconsumed:alt+5=ignore
+keybind = unconsumed:alt+6=ignore
+keybind = unconsumed:alt+7=ignore
+keybind = unconsumed:alt+8=ignore
+keybind = unconsumed:alt+9=ignore
 keybind = unconsumed:alt+f4=ignore
-keybind = unconsumed:ctrl+zero=ignore
-keybind = unconsumed:ctrl+comma=ignore
-keybind = unconsumed:ctrl+minus=ignore
-keybind = unconsumed:ctrl+plus=ignore
 keybind = unconsumed:ctrl+equal=ignore
-keybind = unconsumed:ctrl+insert=ignore
-keybind = unconsumed:ctrl+page_up=ignore
-keybind = unconsumed:ctrl+page_down=ignore
+keybind = unconsumed:ctrl++=ignore
+keybind = unconsumed:ctrl+,=ignore
+keybind = unconsumed:ctrl+-=ignore
+keybind = unconsumed:ctrl+0=ignore
 keybind = unconsumed:ctrl+enter=ignore
 keybind = unconsumed:ctrl+tab=ignore
-keybind = unconsumed:shift+up=ignore
-keybind = unconsumed:shift+down=ignore
-keybind = unconsumed:shift+right=ignore
-keybind = unconsumed:shift+left=ignore
-keybind = unconsumed:shift+home=ignore
+keybind = unconsumed:ctrl+insert=ignore
+keybind = unconsumed:ctrl+page_down=ignore
+keybind = unconsumed:ctrl+page_up=ignore
 keybind = unconsumed:shift+end=ignore
+keybind = unconsumed:shift+home=ignore
 keybind = unconsumed:shift+insert=ignore
-keybind = unconsumed:shift+page_up=ignore
 keybind = unconsumed:shift+page_down=ignore
+keybind = unconsumed:shift+page_up=ignore
+keybind = unconsumed:shift+arrow_down=ignore
+keybind = unconsumed:shift+arrow_left=ignore
+keybind = unconsumed:shift+arrow_right=ignore
+keybind = unconsumed:shift+arrow_up=ignore
 
 # My experience making Ghostty, Tmux, and sending Kitty key codes work together:
 # - By default, tmux can see C-S-h/j/k/l. If I explicitly make Tmux forward the Kitty key codes,
