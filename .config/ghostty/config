@@ -138,11 +138,14 @@ keybind = unconsumed:shift+arrow_up=ignore
 # - key codes it knows that by default Tmux doesn't know what to do with
 # - Because my Tmux config is mapped to explicitly pass these keys through, they are also
 # - explicitly mapped here
-keybind = ctrl+backspace=csi:127;5u
 keybind = ctrl+shift+h=csi:104;6u
 keybind = ctrl+shift+j=csi:106;6u
 keybind = ctrl+shift+k=csi:107;6u
 keybind = ctrl+shift+l=csi:108;6u
+
+keybind = ctrl+tab=csi:9;5u
+
+keybind = ctrl+backspace=csi:127;5u
 
 # Keymaps
 keybind = ctrl+shift+c=copy_to_clipboard
