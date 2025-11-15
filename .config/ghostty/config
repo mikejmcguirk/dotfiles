@@ -143,13 +143,7 @@ keybind = ctrl+shift+j=csi:106;6u
 keybind = ctrl+shift+k=csi:107;6u
 keybind = ctrl+shift+l=csi:108;6u
 
-keybind = shift+up=csi:1;2A
-keybind = shift+down=csi:1;2B
-keybind = shift+left=csi:1;2D
-keybind = shift+right=csi:1;2C
-
 keybind = ctrl+tab=csi:9;5u
-
 keybind = ctrl+backspace=csi:127;5u
 
 # Keymaps
