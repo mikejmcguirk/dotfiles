@@ -7,6 +7,9 @@ git pull
 cd ~/mint_install || exit
 git pull
 
+cd ~/Documents/obsidian || exit
+git pull
+
 cd ~ || exit
 # TODO: This does not see my config alias
 # config pull
