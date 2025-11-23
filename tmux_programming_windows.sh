@@ -1,4 +1,4 @@
-tmux new-window -n "obsidian" -c ~/Documents/obsidian/main
+tmux new-window -n "obsidian" -c ~/Documents/obsidian
 tmux new-window -n "nvim" -c ~/.config/nvim
 # tmux new-window -n "programming" -c ~/programming
 # tmux new-window -n "YAPS" -c ~/programming/yaps/
