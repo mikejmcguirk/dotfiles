@@ -26,20 +26,23 @@ shopt -s dotglob
 alias mint-install="bash $HOME/mint_install/mint_install.sh"
 
 # Modified version of ThePrimeagen's sessionizer/windowizer code
-tmux_windowizer() {
+tmux_check_deps() {
     local missing_deps=0
     if ! command -v tmux >/dev/null 2>&1; then
         echo "tmux not installed"
         missing_deps=1
     fi
+
     if ! command -v fdfind >/dev/null 2>&1; then
         echo "fdfind not installed"
         missing_deps=1
     fi
+
     if ! command -v fzf >/dev/null 2>&1; then
         echo "fzf not installed"
         missing_deps=1
     fi
+
     if [ "$missing_deps" -eq 1 ]; then
         return 1
     fi
@@ -48,11 +51,16 @@ tmux_windowizer() {
         echo "Not inside a tmux session"
         return 1
     fi
+
     if ! pgrep tmux >/dev/null 2>&1; then
         echo "tmux not running"
         return 1
     fi
 
+    return 0
+}
+
+tmux_select_dir() {
     local dir
     if [ $# -eq 1 ]; then
         dir="$1"
@@ -67,6 +75,7 @@ tmux_windowizer() {
     fi
 
     if [ -z "$dir" ]; then
+        echo ""
         return 0
     fi
 
@@ -74,7 +83,21 @@ tmux_windowizer() {
 
     if [ ! -d "$dir" ]; then
         echo "Error: '$dir' is not a valid directory."
+        echo ""
         return 1
+    fi
+
+    echo "$dir"
+}
+
+tmux_windowizer() {
+    if ! tmux_check_deps; then
+        return 1
+    fi
+
+    local dir=$(tmux_select_dir "$@")
+    if [ -z "$dir" ]; then
+        return 0
     fi
 
     local window_name
@@ -82,7 +105,21 @@ tmux_windowizer() {
     tmux new-window -n "$window_name" -c "$dir"
 }
 
+tmux_paner() {
+    if ! tmux_check_deps; then
+        return 1
+    fi
+
+    local dir=$(tmux_select_dir "$@")
+    if [ -z "$dir" ]; then
+        return 0
+    fi
+
+    tmux send-keys -t . "cd \"$dir\"" C-m
+}
+
 alias fdw="tmux_windowizer"
+alias fdp="tmux_paner"
 
 tmux_reload_bashrc() {
     if command -v tmux &>/dev/null; then
