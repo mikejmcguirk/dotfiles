@@ -133,6 +133,16 @@ tmux_reload_bashrc() {
 
 alias tmux-reload-bashrc="tmux_reload_bashrc"
 
+for_py() {
+    cp "$HOME/.config/templates/ruff.toml" .
+}
+
+create_py() {
+    for_py
+}
+
+alias create-py="create_py"
+
 ########
 # Unused
 ########
@@ -252,16 +262,6 @@ alias tmux-reload-bashrc="tmux_reload_bashrc"
 #
 # alias create-aoc-cs="create_aoc_cs"
 #
-# for_py() {
-#     cp "$HOME/default_programming_files/ruff.toml" .
-# }
-# create_py() {
-#     for_py
-#
-#     for_creating_all
-# }
-#
-# alias create-py="create_py"
 #
 # create_py_nogit() {
 #     for_py
