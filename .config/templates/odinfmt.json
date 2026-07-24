@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DanielGavin/ols/master/misc/odinfmt.schema.json",
+
+  "character_width": 99,
+  "tabs": true,
+  "tabs_width": 4,
+  "newline_limit": 1,
+  "brace_style": "_1TBS",
+  "newline_style": "LF",
+  "sort_imports": true,
+  "spaces_around_colons": true,
+  "space_single_line_blocks": true,
+  "align_struct_fields": false,
+  "align_struct_values": false
+}

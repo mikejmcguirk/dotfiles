@@ -20,6 +20,7 @@ fi
 
 alias mkdir='mkdir -p'
 alias cp='cp -r'
+alias chmod='chmod --preserve-root'
 
 shopt -s dotglob
 
@@ -142,6 +143,16 @@ create_py() {
 }
 
 alias create-py="create_py"
+
+init_odin() {
+    git init
+    cp "$HOME/.config/templates/odinfmt.json" .
+    cp "$HOME/.config/templates/ols.json" .
+    mkdir src
+    touch src/main.odin
+}
+
+alias init-odin="init_odin"
 
 ########
 # Unused
