@@ -144,14 +144,16 @@ create_py() {
 
 alias create-py="create_py"
 
-init_odin() {
-    git init
-    cp "$HOME/.config/templates/odinfmt.json" .
-    cp "$HOME/.config/templates/ols.json" .
-    mkdir src
-    touch src/main.odin
+init_odin_nogit() {
+    cp -r "$HOME/.config/templates/odin/." .
 }
 
+init_odin() {
+    init_odin_nogit
+    git init
+}
+
+alias init-odin-nogit="init_odin_nogit"
 alias init-odin="init_odin"
 
 ########
