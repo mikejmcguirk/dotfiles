@@ -156,6 +156,25 @@ init_odin() {
 alias init-odin-nogit="init_odin_nogit"
 alias init-odin="init_odin"
 
+create_odin_lesson() {
+    # use $arg1, $arg2 (or $1, $2 directly)
+    # echo "First: $arg1, Second: $arg2"
+    mkdir "./$1"
+    touch "./$1/exercises.md"
+    mkdir "./$1/exercises_01"
+    mkdir "./$1/exercises_02"
+    mkdir "./$1/notes"
+
+    cp -r "$HOME/.config/templates/odin/." "./$1/exercises_01"
+    cp -r "$HOME/.config/templates/odin/." "./$1/exercises_02"
+    cp -r "$HOME/.config/templates/odin/." "./$1/notes"
+}
+
+alias create-odin_lesson="create_odin_lesson"
+
+## NOTE: Put future templates into ~/Templates
+## MID: Move anything in .config/templates to ~/Templates
+
 ########
 # Unused
 ########
