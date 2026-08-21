@@ -9,7 +9,6 @@
   "newline_style": "LF",
   "sort_imports": true,
   "space_single_line_blocks": true,
-  "spaces_around_colons": true,
   "tabs": true,
   "tabs_width": 4
 }
