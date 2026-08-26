@@ -146,6 +146,13 @@ alias create-py="create_py"
 
 init_odin_nogit() {
     cp -r "$HOME/.config/templates/odin/." .
+
+    cp "$HOME/Templates/agents/AGENTS.md" .
+    mkdir -p ".agents/skills/"
+    cp -r "$HOME/Templates/agents/.agents/skills/general" ".agents/skills/"
+    cp -r "$HOME/Templates/agents/.agents/skills/programming" ".agents/skills/"
+    cp -r "$HOME/Templates/agents/.agents/skills/programming-odin" ".agents/skills/"
+    cp -r "$HOME/Templates/agents/.agents/skills/programming-systems" ".agents/skills/"
 }
 
 init_odin() {
