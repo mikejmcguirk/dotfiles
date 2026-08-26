@@ -144,10 +144,7 @@ create_py() {
 
 alias create-py="create_py"
 
-init_odin_nogit() {
-    cp -r "$HOME/.config/templates/odin/." .
-
-    cp "$HOME/Templates/agents/AGENTS.md" .
+agent_templates_copy() {
     mkdir -p ".agents/skills/"
     cp -r "$HOME/Templates/agents/.agents/skills/general" ".agents/skills/"
     cp -r "$HOME/Templates/agents/.agents/skills/programming" ".agents/skills/"
@@ -155,11 +152,18 @@ init_odin_nogit() {
     cp -r "$HOME/Templates/agents/.agents/skills/programming-systems" ".agents/skills/"
 }
 
+init_odin_nogit() {
+    cp -r "$HOME/.config/templates/odin/." .
+    cp "$HOME/Templates/agents/AGENTS.md" .
+    agent_templates_copy
+}
+
 init_odin() {
     init_odin_nogit
     git init
 }
 
+alias agent-skills-refresh="agent_templates_copy"
 alias init-odin-nogit="init_odin_nogit"
 alias init-odin="init_odin"
 
