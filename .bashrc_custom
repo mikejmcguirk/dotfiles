@@ -148,6 +148,7 @@ agent_templates_copy() {
     mkdir -p ".agents/skills/"
     cp -r "$HOME/Templates/agents/.agents/skills/general" ".agents/skills/"
     cp -r "$HOME/Templates/agents/.agents/skills/programming" ".agents/skills/"
+    cp -r "$HOME/Templates/agents/.agents/skills/programming-lua" ".agents/skills/"
     cp -r "$HOME/Templates/agents/.agents/skills/programming-odin" ".agents/skills/"
     cp -r "$HOME/Templates/agents/.agents/skills/programming-systems" ".agents/skills/"
 }
