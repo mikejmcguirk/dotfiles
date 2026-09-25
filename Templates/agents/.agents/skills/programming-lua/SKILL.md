@@ -18,6 +18,7 @@ description: >-
   ---@return integer foo, string bar
   ---Optional description of returns. If any return is named, name all of them.
   ```
+- Usage of the `table` data type is discouraged. If an input is a table with a known structure, it should be defined with a `@class` (if the input is a list of those classes, the annotation should be `SomeClass[]`) If an input is a list that could be multiple types, a generic type should be used. If the input is a list where each item could be a different type, `any[]` should be used.
 
 ## Data Structure Guidelines
 
