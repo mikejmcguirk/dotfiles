@@ -22,6 +22,16 @@ description: >-
 
 - Functions should be at most ~55 lines.
 
+# Functions
+
+- Creation of thin wrappers is strongly discouraged. Example:
+  ```lua
+  -- This function hides implementation detail with no benefit toward re-usability or concision.
+  local function format_md_table_pipe(text)
+    return string.gsub(text, "|", "\\|")
+  end
+  ```
+
 # Data Management
 
 - Do not create aliases for simple types.
