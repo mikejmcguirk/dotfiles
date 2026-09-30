@@ -1,0 +1,12 @@
+{
+  "name": "web-dev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "check": "tsc --noEmit",
+    "lint": "biome check .",
+    "html": "superhtml check .",
+    "format": "biome check --write ."
+  }
+}
