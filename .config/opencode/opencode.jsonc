@@ -1,0 +1,88 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "formatter": {
+    // Prefer your tools over defaults where they overlap
+    "gofmt": { "disabled": true },
+    "prettier": { "disabled": true }, // re-enable only for json below if desired
+    "biome": { "disabled": true }, // re-define with your extensions
+
+    "biome": {
+      "command": ["biome", "format", "--write", "$FILE"],
+      "extensions": [
+        ".css",
+        ".html",
+        ".js",
+        ".jsx",
+        ".mjs",
+        ".cjs",
+        ".ts",
+        ".tsx",
+        ".mts",
+        ".cts",
+      ],
+    },
+
+    "gofumpt": {
+      "command": ["gofumpt", "-w", "$FILE"],
+      "extensions": [".go"],
+    },
+
+    "prettier-json": {
+      "command": ["prettier", "--write", "$FILE"],
+      "extensions": [".json", ".jsonc"],
+    },
+
+    "stylua": {
+      "command": ["stylua", "$FILE"],
+      "extensions": [".lua"],
+    },
+
+    "odinfmt": {
+      "command": ["odinfmt", "-w", "$FILE"],
+      "extensions": [".odin"],
+    },
+
+    "ruff": {
+      "command": ["ruff", "format", "$FILE"],
+      "extensions": [".py", ".pyi"],
+    },
+    // Optional second pass for fixes (OpenCode stops at first successful formatter per file)
+    // Prefer a wrapper script if you need both ruff check --fix and ruff format:
+    // "ruff-fix-and-format": {
+    //   "command": ["bash", "-c", "ruff check --fix \"$1\" && ruff format \"$1\"", "_", "$FILE"],
+    //   "extensions": [".py", ".pyi"]
+    // },
+
+    "format-queries": {
+      "command": ["format-queries", "$FILE"],
+      "extensions": [".scm"], // adjust extension if different
+    },
+
+    "rustfmt": {
+      "command": ["rustfmt", "$FILE"],
+      "extensions": [".rs"],
+    },
+
+    "shfmt": {
+      "command": ["shfmt", "-w", "$FILE"],
+      "extensions": [".sh", ".bash"],
+    },
+
+    "taplo": {
+      "command": ["taplo", "fmt", "$FILE"],
+      "extensions": [".toml"],
+    },
+
+    "typstyle": {
+      "command": ["typstyle", "-i", "$FILE"],
+      "extensions": [".typ", ".typst"],
+    },
+  },
+  "providers": {
+    "xai": {
+      "body": {
+        "store": true,
+      },
+    },
+  },
+}

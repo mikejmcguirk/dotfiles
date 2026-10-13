@@ -24,4 +24,3 @@ description: >-
         return a + b
       }
   ```
-- If an odinfmt.json file exists, run `odinfmt` on the outputted code.

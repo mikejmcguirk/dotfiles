@@ -14,6 +14,11 @@ description: >-
   * The commented code relates to behavior from another part of the codebase.
   * The commented code is written in a specific way for a non-obvious reason, such as performance optimization or to deal with a subtle logic issue.
 
+# Formatting
+
+- Never run a formatter after adding in new code. The harness will handle this for you.
+- If you want to lint or test, see if the Makefile contains code for `make test` or `make lint`
+
 # Planning Mode
 
 <!-- Placeholder -->
