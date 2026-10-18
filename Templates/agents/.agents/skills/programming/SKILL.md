@@ -17,7 +17,7 @@ description: >-
 # Formatting
 
 - Never run a formatter after adding in new code. The harness will handle this for you.
-- If you want to lint or test, see if the Makefile contains code for `make test` or `make lint`
+- If you want to lint or test, use `make lint` or `make test` if they are available.
 
 # Planning Mode
 
@@ -26,6 +26,7 @@ description: >-
 # Code Organization
 
 - Functions should be at most ~55 lines.
+- Be mindful when adding guard code. When creating new code, guard code can be okay because the point is to get the shape of the idea down. But, when doing refactoring, excessive guard code can obscure incorrect or vague logic in other parts of the code. Conceptually, guard code should be reserved for situations when incoming state is genuinely unknowable. A guard clause should be a signal to check a procedure's callers to make sure their data management is correct.
 
 # Functions
 
