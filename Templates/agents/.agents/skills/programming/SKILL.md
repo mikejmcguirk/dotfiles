@@ -26,7 +26,10 @@ description: >-
 # Code Organization
 
 - Functions should be at most ~55 lines.
-- Be mindful when adding guard code. When creating new code, guard code can be okay because the point is to get the shape of the idea down. But, when doing refactoring, excessive guard code can obscure incorrect or vague logic in other parts of the code. Conceptually, guard code should be reserved for situations when incoming state is genuinely unknowable. A guard clause should be a signal to check a procedure's callers to make sure their data management is correct.
+- Adding any sort of guard code should be treated with suspicion.
+  * When dealing with external data, why was that external data not already verified?
+  * When dealing with internal data from a different point in the call stack, why was it not verified further up the call stack?
+  * The argument for guard code, conceptually, is to centralize data validation. But, in practice, this means data exists in a state of super-position throughout the program, making each procedure the ambiguous data touches less clear as to its intention.
 
 # Functions
 
@@ -46,3 +49,21 @@ description: >-
     + Example: `rune`s in Odin.
 
 - When getting data from an external source (including, but not limited to, the file system, the network, or from a database), the incoming data should be validated as locally to where it is received in the code as possible.
+
+# Testing
+
+- Each functionality of a procedure being tested is one test case.
+  - Consider, for example, a saturating add function:
+    * Verify it does not do anything when adding two numbers that do not overflow
+    * Verify that two numbers that create an overflow are capped at the max value
+    * Verify that the two input numbers must be the same data type.
+    * Verify that the max value is correct for the datatype of the two numbers being passed
+    * Verify the passing two numbers has the same result regardless of the arg order
+    * If the function is an intrinsic, make sure it properly changes its behavior to match different architectures
+  - It is tempting to combine, say, the architecture max value and the data type max value tests into one "max value" test. But, this would be incorrect. One is meant to verify that overloaded arguments are handled correctly. The other relates to how the function compiles. It is likewise tempting to combine the overload same type requirement with the proper type per overload test. Again, this is incorrect. The former relates to how the overloading is structure, the latter is what happens when in the proper overload.
+- Data setup per test must be the absolute most minimal possible to accomplish its purpose. Every piece of data setup creates a new environmental variable. Every piece of data setup is an assumption that might not hold under real conditions.
+- When testing function A, which calls function B, do not re-test function B. The purpose of testing function A is to test function A's code paths.
+- The admonitions above apply to both unit tests and integration tests. An integration test that creates unnecessary mock data, or that intermixes multiple "unhappy path" conditions, is actively mis-leading.
+- Tests need to verify the handling of valid, but junk data.
+  * This exercises the procedure's ability to handle said bad data properly. Does it raise an error when it should? Does it fail gracefully when it should?
+  * Valid, but junk, data is a threat vector when dealing with user input and external data. Robust handling here prevents bad behavior later.
