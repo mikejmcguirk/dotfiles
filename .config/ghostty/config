@@ -62,6 +62,7 @@ split-divider-color = #d598ff
 # Keep zoom hotkeys.
 # keybind = unconsumed:ctrl++=unbind
 # keybind = unconsumed:ctrl+-=unbind
+# keybind = unconsumed:ctrl+equal=unbind
 
 keybind = unconsumed:super+ctrl+shift+arrow_down=unbind
 keybind = unconsumed:super+ctrl+shift+arrow_left=unbind
@@ -112,7 +113,6 @@ keybind = unconsumed:alt+7=unbind
 keybind = unconsumed:alt+8=unbind
 keybind = unconsumed:alt+9=unbind
 keybind = unconsumed:alt+f4=unbind
-keybind = unconsumed:ctrl+equal=unbind
 keybind = unconsumed:ctrl+,=unbind
 keybind = unconsumed:ctrl+0=unbind
 keybind = unconsumed:ctrl+enter=unbind

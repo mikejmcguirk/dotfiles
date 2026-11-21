@@ -24,3 +24,4 @@ description: >-
         return a + b
       }
   ```
+- For any sort of curly braced code, use a `do` statement instead if doing so would not create a line greater than 79 columns.

@@ -30,6 +30,7 @@ description: >-
   * When dealing with external data, why was that external data not already verified?
   * When dealing with internal data from a different point in the call stack, why was it not verified further up the call stack?
   * The argument for guard code, conceptually, is to centralize data validation. But, in practice, this means data exists in a state of super-position throughout the program, making each procedure the ambiguous data touches less clear as to its intention.
+- Creating variables without initializing them is strongly discouraged.
 
 # Functions
 
@@ -43,10 +44,10 @@ description: >-
 
 # Data Management
 
-- Do not create aliases for simple types.
-  * This rule also applies to indirection, such as a struct containing a single value.
-  * Exception: The alias is meant to imply a limitation on the type's values, but the range of values is too large for an enum.
-    + Example: `rune`s in Odin.
+- NEVER create aliases for simple types.
+- NEVER define structs/objects/tables that contain only a single value.
+- NEVER define structs/objects/tables without fields
+- ALWAYS declare constants and stack-allocated variables at the narrowest scope they are used
 
 - When getting data from an external source (including, but not limited to, the file system, the network, or from a database), the incoming data should be validated as locally to where it is received in the code as possible.
 
